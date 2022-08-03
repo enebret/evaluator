@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "docx-pdf": "^0.0.1",
+    "pdf-parse": "^1.1.1",
+    "textract": "^2.5.0"
+  }
 }
