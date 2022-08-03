@@ -7,7 +7,7 @@
 //function checkRequiredSection () {}
 //function checkPortFolioLink () {} // contain linkedin link or personal url
 //git push origin HEAD:<name-of-remote-branch>
-
+//extra
 const testFolder = 'c:/Users/LENOVO/Downloads';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx'
 const testFile = 'c:/Users/LENOVO/Documents/gfsv_amf_agd.docx';
