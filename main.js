@@ -26,7 +26,7 @@ const pdf = require('pdf-parse');
     });*/
     
     
-textract.fromFileWithPath(docxFile, function( error, text ) {console.log(text)})
+//textract.fromFileWithPath(docxFile, function( error, text ) {console.log(text)})
 
 
 /*var docxConverter = require('docx-pdf');
@@ -54,3 +54,40 @@ pdf(dataBuffer).then(function(data) {
     
     
   })*/
+  //console.log('AG.docx'.slice(0, -5)+'.pdf')
+  //console.log(path.extname('AG.docx'));
+  //let pr = 'AG.docx'.split('.')
+  //console.log(pr[0])
+
+
+  async function pageNumber (x) {
+    try{
+      let pr = x.split('.');
+       if(path.extname(x)=='.docx') {
+          var docxConverter = require('docx-pdf');
+          var pdfPath = './'+ x.slice(0,-5)+'.pdf';
+            return docxConverter(x, pdfPath,function(err,result){
+                if (err) {console.log(err)};
+              console.log('result'+result);
+              let dataBuffer = fs.readFileSync(pdfPath);
+                let buff = pdf(dataBuffer).then(function(data) {
+                 return data.numpages
+                console.log(data.numpages);
+              })
+              (async () => {
+                let relay = await buff ();
+                return relay;
+              })();
+          });
+        };
+
+          let dataBuffer = fs.readFileSync(x);
+          return await pdf(dataBuffer).then(function(data) {
+           return data.numpages
+          console.log(data.numpages);
+      })
+    }
+    catch (e) {
+      console.log(e)
+    }
+  };
