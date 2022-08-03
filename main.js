@@ -6,6 +6,7 @@
 //function checkPageCount () {} //min 1 page, max 2pages
 //function checkRequiredSection () {}
 //function checkPortFolioLink () {} // contain linkedin link or personal url
+//
 
 const testFolder = 'c:/Users/LENOVO/Downloads';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx'
