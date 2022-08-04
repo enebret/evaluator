@@ -7,9 +7,10 @@
 //function checkRequiredSection () {}
 //function checkPortFolioLink () {} // contain linkedin link or personal url
 //git add ., git commit -m '', git push origin HEAD:<name-of-remote-branch>
-//extra
+//use "git pull origin master" (to update local repo)
 const testFolder = 'c:/Users/LENOVO/Downloads';
-const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx'
+const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
+const docxFile2 = 'c:/Users/a_cb/Documents/okwute.docx';
 const testFile = 'c:/Users/LENOVO/Documents/gfsv_amf_agd.docx';
 const fs = require('fs');
 const path = require('path');
@@ -79,11 +80,14 @@ pdf(dataBuffer).then(function(data) {
           pdfC(x, './w.pdf');
           //timeout 4secs or sleep function
        
+        setTimeout(() => {
           let dataBuffer = fs.readFileSync('./w.pdf');
-                pdf(dataBuffer).then(function(data) {
-                 return data.numpages
-                console.log(data.numpages);
-              })
+          pdf(dataBuffer).then(function(data) {
+           //return data.numpages
+          console.log(data.numpages);
+        })
+        }, 7000);
+
         } else if (path.extname(x)!=='.docx' && path.extname(x)=='.pdf') {
             let dataBuffer = fs.readFileSync(x);
             return await pdf(dataBuffer).then(function(data) {
@@ -97,4 +101,6 @@ pdf(dataBuffer).then(function(data) {
     }
   };
 
-  console.log(pageNumber(docxFile))
+  console.log(pageNumber(docxFile2))
+
+ 
