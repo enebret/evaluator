@@ -66,7 +66,7 @@ pdf(dataBuffer).then(function(data) {
 
   async function pageNumber (x) {
     try{
-     
+       var t;
        if(path.extname(x)=='.docx') {
           //var pdfPath = x.slice(0,-5)+'.pdf';
           function pdfC (x, y) {
@@ -77,24 +77,26 @@ pdf(dataBuffer).then(function(data) {
                 console.log('result'+result);
               })
         }
-          pdfC(x, './w.pdf');
+        var pdfD = './'+x.substring(docxFile2.lastIndexOf("/")+1, x.length-5)+'.pdf'
+          pdfC(x, pdfD);
           //timeout 4secs or sleep function
        
         setTimeout(() => {
-          let dataBuffer = fs.readFileSync('./w.pdf');
+          let dataBuffer = fs.readFileSync(pdfD);
           pdf(dataBuffer).then(function(data) {
-           //return data.numpages
-          console.log(data.numpages);
+            data.numpages = t;
+          //console.log(data.numpages);
         })
         }, 7000);
 
         } else if (path.extname(x)!=='.docx' && path.extname(x)=='.pdf') {
             let dataBuffer = fs.readFileSync(x);
             return await pdf(dataBuffer).then(function(data) {
-             return data.numpages
-            console.log(data.numpages);
+             data.numpages = t;
+            //console.log(data.numpages);
         })
         }
+        return t
     }
     catch (e) {
       console.log(e)
@@ -104,3 +106,5 @@ pdf(dataBuffer).then(function(data) {
   console.log(pageNumber(docxFile2))
 
  
+  /*let t = './'+docxFile2.substring(docxFile2.lastIndexOf("/")+1, docxFile2.length-5)+'.pdf';
+    console.log (t);*/

@@ -1,1 +1,0 @@
-to get pagecount, if docx, convert to pdf using docx-pdf, then use pdf-parse method to get page count
