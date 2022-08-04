@@ -15,6 +15,7 @@ const fs = require('fs');
 const path = require('path');
 var textract = require('textract');
 const pdf = require('pdf-parse');
+const docxConverter = require('docx-pdf')
     
     /*fs.readdir(testFolder, (err, files) => {
       let r= files.map(file => {
@@ -58,36 +59,42 @@ pdf(dataBuffer).then(function(data) {
   //console.log(path.extname('AG.docx'));
   //let pr = 'AG.docx'.split('.')
   //console.log(pr[0])
+  /*var pdfPath = docxFile.slice(0,-5)+'.pdf';
+  console.log(pdfPath)*/
 
 
   async function pageNumber (x) {
     try{
-      let pr = x.split('.');
+     
        if(path.extname(x)=='.docx') {
-          var docxConverter = require('docx-pdf');
-          var pdfPath = './'+ x.slice(0,-5)+'.pdf';
-            return docxConverter(x, pdfPath,function(err,result){
-                if (err) {console.log(err)};
-              console.log('result'+result);
-              let dataBuffer = fs.readFileSync(pdfPath);
-                let buff = pdf(dataBuffer).then(function(data) {
+          //var pdfPath = x.slice(0,-5)+'.pdf';
+          function pdfC (x, y) {
+            docxConverter(x, y,function(err,result){
+                if(err){
+                  console.log(err);
+                }
+                console.log('result'+result);
+              })
+        }
+          pdfC(x, './w.pdf');
+          //timeout 4secs or sleep function
+       
+          let dataBuffer = fs.readFileSync('./w.pdf');
+                pdf(dataBuffer).then(function(data) {
                  return data.numpages
                 console.log(data.numpages);
               })
-              (async () => {
-                let relay = await buff ();
-                return relay;
-              })();
-          });
-        };
-
-          let dataBuffer = fs.readFileSync(x);
-          return await pdf(dataBuffer).then(function(data) {
-           return data.numpages
-          console.log(data.numpages);
-      })
+        } else if (path.extname(x)!=='.docx' && path.extname(x)=='.pdf') {
+            let dataBuffer = fs.readFileSync(x);
+            return await pdf(dataBuffer).then(function(data) {
+             return data.numpages
+            console.log(data.numpages);
+        })
+        }
     }
     catch (e) {
       console.log(e)
     }
   };
+
+  console.log(pageNumber(docxFile))
