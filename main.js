@@ -88,15 +88,17 @@ pdf(dataBuffer).then(function(data) {
     
     }
 
-  (async () =>{
-    var r = await pageNumber(docxFile);
+  let p = async function (x) {
+    var r = await pageNumber(x);
     setTimeout(() => {
         let dataBuffer = fs.readFileSync(r);
         pdf(dataBuffer).then(function(data) {
             console.log(data.numpages);
         })
     }, 7000);
-  })()
+  };
+
+  p(docxFile)
 
  
   /*let t = './'+docxFile2.substring(docxFile2.lastIndexOf("/")+1, docxFile2.length-5)+'.pdf';
