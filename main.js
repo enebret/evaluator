@@ -63,10 +63,10 @@ pdf(dataBuffer).then(function(data) {
   /*var pdfPath = docxFile.slice(0,-5)+'.pdf';
   console.log(pdfPath)*/
 
-
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
   async function pageNumber (x) {
-    try{
-       var t;
+
+       
        if(path.extname(x)=='.docx') {
           //var pdfPath = x.slice(0,-5)+'.pdf';
           function pdfC (x, y) {
@@ -77,33 +77,26 @@ pdf(dataBuffer).then(function(data) {
                 console.log('result'+result);
               })
         }
-        var pdfD = './'+x.substring(docxFile2.lastIndexOf("/")+1, x.length-5)+'.pdf'
+        var pdfD = './'+x.substring(x.lastIndexOf("/")+1, x.length-5)+'.pdf'
           pdfC(x, pdfD);
           //timeout 4secs or sleep function
-       
-        setTimeout(() => {
-          let dataBuffer = fs.readFileSync(pdfD);
-          pdf(dataBuffer).then(function(data) {
-            data.numpages = t;
-          //console.log(data.numpages);
-        })
-        }, 7000);
-
-        } else if (path.extname(x)!=='.docx' && path.extname(x)=='.pdf') {
-            let dataBuffer = fs.readFileSync(x);
-            return await pdf(dataBuffer).then(function(data) {
-             data.numpages = t;
-            //console.log(data.numpages);
-        })
-        }
-        return t
+        }  
+      
+            console.log('first run');
+            return pdfD
+      
+    
     }
-    catch (e) {
-      console.log(e)
-    }
-  };
 
-  console.log(pageNumber(docxFile2))
+  (async () =>{
+    var r = await pageNumber(docxFile);
+    setTimeout(() => {
+        let dataBuffer = fs.readFileSync(r);
+        pdf(dataBuffer).then(function(data) {
+            console.log(data.numpages);
+        })
+    }, 7000);
+  })()
 
  
   /*let t = './'+docxFile2.substring(docxFile2.lastIndexOf("/")+1, docxFile2.length-5)+'.pdf';
