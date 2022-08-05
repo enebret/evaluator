@@ -11,6 +11,7 @@
 const testFolder = 'c:/Users/LENOVO/Downloads';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const docxFile2 = 'c:/Users/a_cb/Documents/okwute.docx';
+const docxFile3 = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const testFile = 'c:/Users/LENOVO/Documents/gfsv_amf_agd.docx';
 const fs = require('fs');
 const path = require('path');
@@ -63,7 +64,7 @@ pdf(dataBuffer).then(function(data) {
   /*var pdfPath = docxFile.slice(0,-5)+'.pdf';
   console.log(pdfPath)*/
 
-  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
   async function pageNumber (x) {
 
        
@@ -94,12 +95,26 @@ pdf(dataBuffer).then(function(data) {
         let dataBuffer = fs.readFileSync(r);
         pdf(dataBuffer).then(function(data) {
             console.log(data.numpages);
+            //write page number to txt file (create txt file with username)
         })
     }, 7000);
   };
 
-  p(docxFile)
+  //p(docxFile)
 
  
-  /*let t = './'+docxFile2.substring(docxFile2.lastIndexOf("/")+1, docxFile2.length-5)+'.pdf';
-    console.log (t);*/
+var tf = async function (x) {
+    if (path.extname(x)=='.docx') {
+        await p(x)
+      }else if (path.extname(x)=='.pdf'){
+        let dataBuffer = fs.readFileSync(x);
+        pdf(dataBuffer).then(function(data) {
+            console.log(data.numpages);
+            //write page number to txt file (create txt file with username)
+        })
+      }else if (path.extname(x)!=='.pdf' || path.extname(x)!=='.pdf' ) {
+        console.log ('wrong file type')
+      }
+}
+
+tf(docxFile3)
