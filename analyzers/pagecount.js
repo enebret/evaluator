@@ -103,13 +103,18 @@ pdf(dataBuffer).then(function(data) {
   //p(docxFile)
 
  
-var tf = async function (x) {
+var tf = async function (x, y) {
     if (path.extname(x)=='.docx') {
         await p(x)
       }else if (path.extname(x)=='.pdf'){
         let dataBuffer = fs.readFileSync(x);
         pdf(dataBuffer).then(function(data) {
-            console.log(data.numpages);
+          var pages = data.numpages
+          fs.appendFile(y, `number of pages: ${pages}`+'\n', function (err) {
+            if (err) throw err;
+            console.log('number of pages copied successfully');
+          });
+            
             //write page number to txt file (create txt file with username)
         })
       }else if (path.extname(x)!=='.pdf' || path.extname(x)!=='.pdf' ) {
@@ -117,4 +122,4 @@ var tf = async function (x) {
       }
 }
 
-tf(docxFile3)
+module.exports = tf
