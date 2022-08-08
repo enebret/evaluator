@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 var filesize = require('file-size');
 const testFile = 'c:/Users/LENOVO/Documents/design.pdf';
+const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 
 function fileS (x, y) {
     var stats = fs.statSync(x);
@@ -14,3 +15,4 @@ function fileS (x, y) {
 }
 
 module.exports = fileS
+//fileS(docxFile)

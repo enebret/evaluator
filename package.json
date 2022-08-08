@@ -13,6 +13,6 @@
     "docx-pdf": "^0.0.1",
     "file-size": "^1.0.0",
     "pdf-parse": "^1.1.1",
-    "textract": "^0.20.0"
+    "textract": "^2.5.0"
   }
 }

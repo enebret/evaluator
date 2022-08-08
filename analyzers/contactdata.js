@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-//var textract = require('textract');
+var textract = require('textract');
 const pdf = require('pdf-parse');
 var filesize = require('file-size');
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
+const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 
 function linkF (x, y) {
     if (path.extname(x)=='.docx') {
@@ -31,5 +32,5 @@ function linkF (x, y) {
     }
 };
 
-module.exports = linkF
-//linkF(testFile)
+//module.exports = linkF
+linkF(docxFile)

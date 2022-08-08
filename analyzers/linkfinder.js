@@ -1,14 +1,40 @@
 const fs = require('fs');
 const path = require('path');
-//var textract = require('textract');
+var textract = require('textract');
 const pdf = require('pdf-parse');
 var filesize = require('file-size');
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
-
+const testFile2 = 'c:/Users/LENOVO/Documents/gfsv_amf_agd.docx';
 function linknD (x, y) {
     if (path.extname(x)=='.docx') {
         textract.fromFileWithPath(x, function( error, text ) {
-            console.log(text.split(" ").length)
+            let rp = text.trim().replace(/[\r\n]/gm, '').split(" ");
+            let fg = []
+           rp.forEach((x)=>{
+                if(x.length>1) {
+                    fg.push(x)
+                }
+                
+            })
+            //console.table(fg);
+            //console.log(fg[22].slice(0,25))
+            var lk = []
+            fg.forEach((x)=>{
+                if(x.slice(0,25)=='https://www.linkedin.com/'){
+                    fs.appendFile(y, `LinkdIn link: ${x}`+'\n', function (err) {
+                        if (err) throw err;
+                        console.log('LinkedIn link copied successfully.');
+                      });
+                    console.log(x)
+                    //write link to txt file
+                } else {
+                    lk.push('No link found.')
+                    
+                }
+            });
+            if (lk[0]) {
+                console.log(lk[0])
+            }
             //margin of error should not be more than 10%
             //write total amount of words to txt file
         })
@@ -45,3 +71,4 @@ function linknD (x, y) {
 };
 
 module.exports = linknD
+//linknD(testFile2)

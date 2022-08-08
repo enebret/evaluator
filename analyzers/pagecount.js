@@ -89,15 +89,21 @@ pdf(dataBuffer).then(function(data) {
     
     }
 
-  let p = async function (x) {
+  let p = async function (x, y) {
     var r = await pageNumber(x);
     setTimeout(() => {
         let dataBuffer = fs.readFileSync(r);
         pdf(dataBuffer).then(function(data) {
-            console.log(data.numpages);
+          var pages = data.numpages
+          fs.appendFile(y, `number of pages: ${pages}`+'\n', function (err) {
+            if (err) throw err;
+            console.log('number of pages copied successfully');
+          });
             //write page number to txt file (create txt file with username)
         })
     }, 7000);
+    fs.unlinkSync(r);
+          console.log("File removed:", r);
   };
 
   //p(docxFile)
@@ -105,7 +111,7 @@ pdf(dataBuffer).then(function(data) {
  
 var tf = async function (x, y) {
     if (path.extname(x)=='.docx') {
-        await p(x)
+        await p(x, y)
       }else if (path.extname(x)=='.pdf'){
         let dataBuffer = fs.readFileSync(x);
         pdf(dataBuffer).then(function(data) {
@@ -114,6 +120,7 @@ var tf = async function (x, y) {
             if (err) throw err;
             console.log('number of pages copied successfully');
           });
+          
             
             //write page number to txt file (create txt file with username)
         })
@@ -122,4 +129,5 @@ var tf = async function (x, y) {
       }
 }
 
+//tf(docxFile)
 module.exports = tf
