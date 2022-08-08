@@ -28,9 +28,9 @@ function linknD (x, y) {
             //console.log(fg[22].slice(0,25))
             fg.forEach((x)=>{
                 if(x.slice(0,25)=='https://www.linkedin.com/'){
-                    fs.appendFile(y, x+'\n', function (err) {
+                    fs.appendFile(y, `LinkdIn link: ${x}`+'\n', function (err) {
                         if (err) throw err;
-                        console.log('File name written successfully.');
+                        console.log('LinkedIn link copied successfully.');
                       });
                     console.log(x)
                     //write link to txt file

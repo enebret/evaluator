@@ -13,9 +13,9 @@ function fileN (x, y) {
         //write to txt file
     } else if (path.extname(x)=='.pdf') {
         var filename = path.basename(x, '.pdf');
-        fs.appendFile(y, filename+'\n', function (err) {
+        fs.appendFile(y, `Filename: ${filename}`+'\n', function (err) {
             if (err) throw err;
-            console.log('File name written successfully.');
+            console.log('File name copied successfully.');
           });
         console.log(filename)
         //write to txt file

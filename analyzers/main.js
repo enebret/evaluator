@@ -7,23 +7,27 @@ const pagecount = require ('./pagecount.js');
 const filetype = require ('./filetype.js');
 const path = require('path');
 const linknD = require ('./linkfinder.js');
-const testFile = 'c:/Users/LENOVO/Documents/design.pdf';
+const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 
 var d = async function (x) {
     function fileN (x) {
         if (path.extname(x)=='.docx') {
             var filename = path.basename(x, '.docx');
-            return filename
+            var extN = filename + '.docx'
+            return {filename, ext: extN}
             
         } else if (path.extname(x)=='.pdf') {
             var filename = path.basename(x, '.pdf');
-            return filename
+            var extN = filename + '.pdf'
+            return {filename, ext: extN}
             
         }
     };
-    var file = fileN (x)
-    var txtPath = file+'.txt';
-    fs.writeFile(txtPath, `cv review for ${txtPath}`+'\n', function (err) {
+    var file = fileN (x);
+    var {filename} = file;
+    var {ext} = file;
+    var txtPath = filename+'.txt';
+    fs.writeFile(txtPath, `cv review for ${ext}`+'\n', function (err) {
         if (err) throw err;
         console.log('File is created successfully.');
       });

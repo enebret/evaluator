@@ -17,16 +17,14 @@ function linkF (x, y) {
         let dataBuffer = fs.readFileSync(x);
         pdf(dataBuffer).then(function(data) {
             let rp = data.text.trim().replace(/[\r\n]/gm, '')
-            var number = rp.match(/(?:[-+() ]*\d){10,13}/g)
-            var email = rp.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/)
-            //write number and email to txt file
-            var num = number[0];
-            var mail = email[0]
-            fs.appendFile(y, 'contact details'+'\n'+`Phone number: ${num}`+`Email: ${mail}`+'\n', function (err) {
+            var number = rp.match(/(?:[-+() ]*\d){10,13}/g)[0]
+            var email = rp.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi)[0]
+      
+            fs.appendFile(y, 'contact details::'+'\n'+`Phone number: ${number}`+', '+`email: ${email}`+'\n', function (err) {
                 if (err) throw err;
                 console.log('contact details copied successfully.');
               });
-            console.log(rep[0])
+            //console.log(email)
             
         })
         
@@ -34,3 +32,4 @@ function linkF (x, y) {
 };
 
 module.exports = linkF
+//linkF(testFile)
