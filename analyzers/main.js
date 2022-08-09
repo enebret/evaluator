@@ -8,6 +8,7 @@ const filetype = require ('./filetype.js');
 const path = require('path');
 const linknD = require ('./linkfinder.js');
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
+const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 
 var d = async function (x) {
     function fileN (x) {
@@ -39,7 +40,12 @@ var d = async function (x) {
       wordcount(x, txtPath);
       filetype(x, txtPath);
       pagecount(x, txtPath);
+      
+      setTimeout(() => {
+        fs.unlinkSync('./'+filename+'.pdf');
+        console.log("File removed:", ext);
+      }, 20000);
 
 };
 
-d(testFile)
+d(docxFile5)

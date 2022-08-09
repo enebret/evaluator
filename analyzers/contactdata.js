@@ -49,5 +49,5 @@ function linkF (x, y) {
     }
 };
 
-//module.exports = linkF
-linkF(docxFile2)
+module.exports = linkF
+//linkF(docxFile2)

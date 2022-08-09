@@ -13,6 +13,7 @@ const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const docxFile2 = 'c:/Users/a_cb/Documents/okwute.docx';
 const docxFile3 = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const testFile = 'c:/Users/LENOVO/Documents/gfsv_amf_agd.docx';
+const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 const fs = require('fs');
 const path = require('path');
 var textract = require('textract');
@@ -95,6 +96,7 @@ pdf(dataBuffer).then(function(data) {
         let dataBuffer = fs.readFileSync(r);
         pdf(dataBuffer).then(function(data) {
           var pages = data.numpages
+          //console.log(pages)
           fs.appendFile(y, `number of pages: ${pages}`+'\n', function (err) {
             if (err) throw err;
             console.log('number of pages copied successfully');
@@ -102,8 +104,10 @@ pdf(dataBuffer).then(function(data) {
             //write page number to txt file (create txt file with username)
         })
     }, 7000);
-    fs.unlinkSync(r);
+    /*setTimeout(() => {
+      fs.unlinkSync(r);
           console.log("File removed:", r);
+    }, 20000);*/
   };
 
   //p(docxFile)
@@ -129,5 +133,5 @@ var tf = async function (x, y) {
       }
 }
 
-//tf(docxFile)
+//tf(docxFile5)
 module.exports = tf

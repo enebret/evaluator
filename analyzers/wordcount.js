@@ -51,5 +51,5 @@ let wc = function (x, y) {
     }
 };
 
-//module.exports = wc
-wc(docxFile3)
+module.exports = wc
+//wc(docxFile3)

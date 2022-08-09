@@ -10,7 +10,7 @@ function fileS (x, y) {
     //console.log(filesize(stats.size).human())
     fs.appendFile(y, `Filesize: ${fileS}`+'\n', function (err) {
         if (err) throw err;
-        console.log('File size written successfully.');
+        console.log('File size is copied successfully.');
       });
 }
 

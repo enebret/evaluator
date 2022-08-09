@@ -25,14 +25,18 @@ function linknD (x, y) {
                         if (err) throw err;
                         console.log('LinkedIn link copied successfully.');
                       });
-                    console.log(x)
+                    //console.log(x)
                     //write link to txt file
                 } else {
-                    lk.push('No link found.')
+                    lk.push('No LinkndIn link found.')
                     
                 }
             });
             if (lk[0]) {
+                fs.appendFile(y, `LinkdIn link: ${lk[0]}`+'\n', function (err) {
+                    if (err) throw err;
+                    console.log('No social link found.');
+                  });
                 console.log(lk[0])
             }
             //margin of error should not be more than 10%
