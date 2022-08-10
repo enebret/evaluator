@@ -14,7 +14,7 @@ function linkF (x, y) {
         textract.fromFileWithPath(x, function( error, text ) {
             let rp = text.trim().replace(/[\r\n]/gm, '')
               if(rp.match(/(?:[-+() ]*\d){10,13}/g)==null && rp.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi) == null) {
-                fs.appendFile(y, 'contact details:: No contact details registered on file', function (err) {
+                fs.appendFile(y, 'contact details::No' +'\n'+ 'No contact details registered on file', function (err) {
                     if (err) throw err;
                     console.log('No available contacts on file.');
                   });
@@ -22,7 +22,7 @@ function linkF (x, y) {
               } else if (rp.match(/(?:[-+() ]*\d){10,13}/g)!==null && rp.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi) !== null){
                     var number = rp.match(/(?:[-+() ]*\d){10,13}/g)[0]
                     var email = rp.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi)[0]
-                    fs.appendFile(y, 'contact details::'+'\n'+`Phone number: ${number}`+', '+`email: ${email}`+'\n', function (err) {
+                    fs.appendFile(y, 'contact details::Yes'+'\n'+`Phone number: ${number}`+', '+`email: ${email}`+'\n', function (err) {
                         if (err) throw err;
                         console.log('contact details copied successfully.');
                       });

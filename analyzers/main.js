@@ -28,7 +28,7 @@ var d = async function (x) {
     var {filename} = file;
     var {ext} = file;
     var txtPath = filename+'.txt';
-    fs.writeFile(txtPath, `cv review for ${ext}`+'\n', function (err) {
+    fs.writeFile(txtPath, `cv review for ${filename}`+'\n', function (err) {
         if (err) throw err;
         console.log('File is created successfully.');
       });
