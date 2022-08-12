@@ -15,6 +15,6 @@
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.13.0",
     "text-transform": "^0.1.2",
-    "textract": "^0.20.0"
+    "textract": "^2.5.0"
   }
 }

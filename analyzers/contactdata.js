@@ -18,7 +18,7 @@ function linkF (x, y) {
                     if (err) throw err;
                     console.log('No available contacts on file.');
                   });
-                console.log('No number or email registered on file')
+                //console.log('No number or email registered on file')
               } else if (rp.match(/(?:[-+() ]*\d){10,13}/g)!==null && rp.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi) !== null){
                     var number = rp.match(/(?:[-+() ]*\d){10,13}/g)[0]
                     var email = rp.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi)[0]
@@ -50,4 +50,4 @@ function linkF (x, y) {
 };
 
 module.exports = linkF
-//linkF(docxFile2)
+//linkF(docxFile5)

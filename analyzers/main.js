@@ -5,12 +5,14 @@ const contactdetails = require ('./contactdata.js');
 const wordcount = require ('./wordcount.js');
 const pagecount = require ('./pagecount.js');
 const filetype = require ('./filetype.js');
+const pdf = require ('./pdfgen.js')
 const path = require('path');
 const linknD = require ('./linkfinder.js');
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 
 var d = async function (x) {
+   try {
     function fileN (x) {
         if (path.extname(x)=='.docx') {
             var filename = path.basename(x, '.docx');
@@ -39,12 +41,19 @@ var d = async function (x) {
       linknD(x, txtPath);
       wordcount(x, txtPath);
       filetype(x, txtPath);
-      pagecount(x, txtPath);
+      //pagecount(x, txtPath);
+        setTimeout(() => {
+            pdf(txtPath)
+        }, 6000);
+
       
-      setTimeout(() => {
+      /*setTimeout(() => {
         fs.unlinkSync('./'+filename+'.pdf');
         console.log("File removed:", ext);
-      }, 20000);
+      }, 20000);*/
+   } catch (error) {
+     console.log (error)
+   }
 
 };
 
