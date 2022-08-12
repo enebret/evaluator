@@ -9,12 +9,12 @@ const { textTransform } = require('text-transform');
 let pdf = function (x) {
         const data = fs.readFileSync(x, 'utf8');
         var split = data.split('\n');
-        //let title = textTransform(split[0].slice(0, split[0].length-2), 'uppercase');
+        let title = textTransform(split[0].slice(0, split[0].length-2), 'uppercase');
         var lt = split[1].length - 3
         const filename = textTransform(split[1].slice(10, lt), 'uppercase');
         let filesize = split[2].slice(10, split[0].length-2);
-        //let wordcount = split[6].slice(17, split[0].length-2);
-        //let pages = split[7].slice(17, split[0].length-2);
+        let wordcount = split[6].slice(17, split[0].length-2);
+        let pages = split[7].slice(17, split[0].length-2);
         var fonts = {
           Roboto: {
             normal: 'C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf',
@@ -35,7 +35,7 @@ let pdf = function (x) {
           ],
           styles: {
             header: {
-              fontSize: 18,
+              fontSize: 16,
               bold: true
             }
           }

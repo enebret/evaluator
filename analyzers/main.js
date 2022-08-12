@@ -8,6 +8,7 @@ const filetype = require ('./filetype.js');
 const pdf = require ('./pdfgen.js')
 const path = require('path');
 const linknD = require ('./linkfinder.js');
+const { clearInterval } = require( 'timers' );
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 
@@ -46,11 +47,11 @@ var d = async function (x) {
       filetype(x, txtPath);
       //pagecount(x, txtPath);
     
-          setInterval(() => {
+         setTimeout(() => {
             pdf(txt)
           }, 20000);
     
-        
+          
 
       
       /*setTimeout(() => {
