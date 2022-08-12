@@ -14,6 +14,7 @@
     "file-size": "^1.0.0",
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.13.0",
+    "pdfmake": "^0.2.5",
     "text-transform": "^0.1.2",
     "textract": "^2.5.0"
   }

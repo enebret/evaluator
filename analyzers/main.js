@@ -26,10 +26,13 @@ var d = async function (x) {
             
         }
     };
+    
     var file = fileN (x);
     var {filename} = file;
     var {ext} = file;
     var txtPath = filename+'.txt';
+    var txtPath2 = './'+filename+'.txt';
+    const txt = './HARRY AKHALUODE CV.txt'
     fs.writeFile(txtPath, `cv review for ${filename}`+'\n', function (err) {
         if (err) throw err;
         console.log('File is created successfully.');
@@ -42,9 +45,12 @@ var d = async function (x) {
       wordcount(x, txtPath);
       filetype(x, txtPath);
       //pagecount(x, txtPath);
-        setTimeout(() => {
-            pdf(txtPath)
-        }, 6000);
+    
+          setInterval(() => {
+            pdf(txt)
+          }, 20000);
+    
+        
 
       
       /*setTimeout(() => {

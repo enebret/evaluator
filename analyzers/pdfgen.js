@@ -1,25 +1,58 @@
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+var PdfPrinter = require('pdfmake');
+const path = require('path');
+
 const txt = './HARRY AKHALUODE CV.txt'
 const { textTransform } = require('text-transform');
 
-let pdf = async function (x) {
-    
-    try {
+let pdf = function (x) {
         const data = fs.readFileSync(x, 'utf8');
-        let split = data.split('\n');
+        var split = data.split('\n');
         //let title = textTransform(split[0].slice(0, split[0].length-2), 'uppercase');
-        let lt = split[1].length - 3
-        let filename = textTransform(split[1].slice(0, lt), 'uppercase');
+        var lt = split[1].length - 3
+        const filename = textTransform(split[1].slice(10, lt), 'uppercase');
         let filesize = split[2].slice(10, split[0].length-2);
-        let wordcount = split[6].slice(17, split[0].length-2);
-        let pages = split[7].slice(17, split[0].length-2);
-        //console.log(`${filename}`+'.pdf')
-        let pdfDoc = new PDFDocument;
-        pdfDoc.pipe(fs.createWriteStream(`${filename}`+'.pdf'));
-        pdfDoc.font('Times-Bold').fontSize(16).text(`CV REVIEW FOR ${filename}`);
+        //let wordcount = split[6].slice(17, split[0].length-2);
+        //let pages = split[7].slice(17, split[0].length-2);
+        var fonts = {
+          Roboto: {
+            normal: 'C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf',
+            bold: 'C:/usr/evaluator/analyzers/fonts/roboto.medium.ttf',
+            italics: 'C:/usr/evaluator/analyzers/fonts/roboto.italic.ttf',
+            bolditalics: 'C:/usr/evaluator/analyzers/fonts/roboto.medium-italic.ttf'
+          }
+        };
+        
+       
+        var printer = new PdfPrinter(fonts);
+      
+        
+        var docDefinition = {
+          content: [
+            `${filesize}`,
+            {text: 'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines', style: 'header'}
+          ],
+          styles: {
+            header: {
+              fontSize: 18,
+              bold: true
+            }
+          }
+        };
+        
+        
+        
+        var pdfDoc = printer.createPdfKitDocument(docDefinition);
+        pdfDoc.pipe(fs.createWriteStream(`${filename}.pdf`));
+        pdfDoc.end();
+
+        //console.log(`${filename}.pdf`)
+        //let pdfDoc = new PDFDocument;
+        //pdfDoc.pipe(fs.createWriteStream(`${filename}.pdf`))
+        //pdfDoc.text(`${filesize}`)
         //check if filename equals fullname extracted from db/url param/form data
-        if(filename){
+        /*if(filename){
           let text1 = `File Name`;
           let text2 = `Your resume file is named ${filename}.`
           let text3 = 
@@ -175,9 +208,7 @@ let pdf = async function (x) {
             fs.unlinkSync('./SampleDocument.pdf');
             console.log("File removed:", 'SampleDocument.pdf');
           }, 60000);*/
-      } catch (err) {
-        console.error(err);
-      }
+     
 
 
 }
