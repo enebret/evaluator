@@ -50,7 +50,9 @@ var d = async function (x) {
     
          setTimeout(() => {
             pdf(txtPath2)
-          }, 20000);
+          }, 38000);
+         
+          
     
           
 
@@ -64,5 +66,6 @@ var d = async function (x) {
    }
 
 };
+
 
 d(docxFile)

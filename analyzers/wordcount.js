@@ -19,7 +19,7 @@ let wc = function (x, y) {
             
         })
         var lent = fg.length
-        fs.appendFile(y, `total word count: ${lent}`+'\n', function (err) {
+        fs.appendFile(y, `wordcount: ${lent}`+'\n', function (err) {
             if (err) throw err;
             console.log('word count copied successfully.');
           });
@@ -39,10 +39,10 @@ let wc = function (x, y) {
             })
             var lent = fg.length
             console.log(lent)
-            /*fs.appendFile(y, `total word count: ${lent}`+'\n', function (err) {
+            fs.appendFile(y, `wordcount: ${lent}`+'\n', function (err) {
                 if (err) throw err;
                 console.log('word count copied successfully.');
-              });*/
+              });
             
             //margin of error should not be more than 10%
             // write total amount of words to txt file

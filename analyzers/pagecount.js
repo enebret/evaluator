@@ -99,7 +99,7 @@ pdf(dataBuffer).then(function(data) {
         pdf(dataBuffer).then(function(data) {
           var pages = data.numpages
           console.log(pages)
-          fs.appendFile(y, `number of pages: ${pages}`+'\n', function (err) {
+          fs.appendFile(y, `pages: ${pages}`+'\n', function (err) {
             if (err) throw err;
             console.log('number of pages copied successfully');
           });
@@ -122,7 +122,7 @@ var tf = async function (x, y) {
         let dataBuffer = fs.readFileSync(x);
         pdf(dataBuffer).then(function(data) {
           var pages = data.numpages
-          fs.appendFile(y, `number of pages: ${pages}`+'\n', function (err) {
+          fs.appendFile(y, `pages: ${pages}`+'\n', function (err) {
             if (err) throw err;
             console.log('number of pages copied successfully');
           });
