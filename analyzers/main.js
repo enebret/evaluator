@@ -11,6 +11,7 @@ const linknD = require ('./linkfinder.js');
 const { clearInterval } = require( 'timers' );
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
+const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 
 var d = async function (x) {
    try {
@@ -33,7 +34,7 @@ var d = async function (x) {
     var {ext} = file;
     var txtPath = filename+'.txt';
     var txtPath2 = './'+filename+'.txt';
-    const txt = './HARRY AKHALUODE CV.txt'
+    //const txt = './HARRY AKHALUODE CV.txt'
     fs.writeFile(txtPath, `cv review for ${filename}`+'\n', function (err) {
         if (err) throw err;
         console.log('File is created successfully.');
@@ -48,15 +49,15 @@ var d = async function (x) {
       pagecount(x, txtPath);
     
          setTimeout(() => {
-            pdf(txt)
+            pdf(txtPath2)
           }, 20000);
     
           
 
       
       /*setTimeout(() => {
-        fs.unlinkSync('./'+filename+'.pdf');
-        console.log("File removed:", ext);
+        fs.unlinkSync(txtPath2);
+        console.log(".txt file removed.");
       }, 20000);*/
    } catch (error) {
      console.log (error)
@@ -64,4 +65,4 @@ var d = async function (x) {
 
 };
 
-d(docxFile5)
+d(docxFile)

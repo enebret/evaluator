@@ -13,15 +13,17 @@ let pdf = function (x) {
         var lt = split[1].length - 3
         const filename = textTransform(split[1].slice(10, lt), 'uppercase');
         const filesize = split[2].slice(10, split[0].length-2);
-        let wordcount = split[6].slice(17, split[0].length-2);
-        let pages = split[7].slice(17, split[0].length-2);
+        let wordcount = split[7].slice(17, split[0].length-2);
+        let pages = split[8].slice(17, split[0].length-2);
+        
          if(filename){
           var fonts = {
             Roboto: {
-              normal: 'C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf',
-              bold: 'C:/usr/evaluator/analyzers/fonts/roboto.medium.ttf',
-              italics: 'C:/usr/evaluator/analyzers/fonts/roboto.italic.ttf',
-              bolditalics: 'C:/usr/evaluator/analyzers/fonts/roboto.medium-italic.ttf'
+              //"C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf"
+              normal: 'C:/xjv/evaluator/analyzers/fonts/roboto.regular.ttf',
+              bold: 'C:/xjv/evaluator/analyzers/fonts/roboto.medium.ttf',
+              italics: 'C:/xjv/evaluator/analyzers/fonts/roboto.italic.ttf',
+              bolditalics: 'C:/xjv/evaluator/analyzers/fonts/roboto.medium-italic.ttf'
             }
           };
           
@@ -32,14 +34,18 @@ let pdf = function (x) {
           var docDefinition = {
             content: [
               //maybe use ternaries here
-              `${filename}`,
-              {text: 'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines', style: 'header'},
-              `${filesize}`,
-              {text: 'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines', style: 'header'},
-              `${wordcount}`,
-              {text: 'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines', style: 'header'},
-              `${pages}`,
-              {text: 'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines', style: 'header'}
+              {text: 'File Name', style: 'header'},
+              {text: `Your resume file is named ${filename}.`},
+              {text: 'It is a good practice to have your first and last name in the file name of your resume. Email clients can mark generic file names as suspicious. Adding your name ensures your resume will be found easy and assigned to the right application.'},
+              {text: 'File Size', style: 'header'},
+              {text: `Your resume file size is ${filesize}.`},
+              {text: 'The common file size limit for website uploads is under 2mB. If your resume is too large, we recommend removingany custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.'},
+              {text: 'Word Count', style: 'header'},
+              {text: 'The common file size limit for website uploads is under 2mB. If your resume is too large, we recommend removingany custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.'},
+              {text: 'Page Count', style: 'header'},
+              {text: `Your resume is ${pages} pages long.`},
+              {text: 'It is important to nail the right resume length. More than two pages and the recruiter will not read through your resume, whereas, if it is too short, it will undersell you'}
+
             ],
             styles: {
               header: {
@@ -226,5 +232,5 @@ let pdf = function (x) {
 
 }
 
-pdf(txt)
-//module.exports = pdf
+//pdf(txt)
+module.exports = pdf

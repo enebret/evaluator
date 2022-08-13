@@ -18,7 +18,9 @@ const fs = require('fs');
 const path = require('path');
 var textract = require('textract');
 const pdf = require('pdf-parse');
-const docxConverter = require('docx-pdf')
+const docxConverter = require('docx-pdf');
+
+
     
     /*fs.readdir(testFolder, (err, files) => {
       let r= files.map(file => {
@@ -96,26 +98,26 @@ pdf(dataBuffer).then(function(data) {
         let dataBuffer = fs.readFileSync(r);
         pdf(dataBuffer).then(function(data) {
           var pages = data.numpages
-          //console.log(pages)
+          console.log(pages)
           fs.appendFile(y, `number of pages: ${pages}`+'\n', function (err) {
             if (err) throw err;
             console.log('number of pages copied successfully');
           });
             //write page number to txt file (create txt file with username)
         })
-    }, 7000);
-    /*setTimeout(() => {
+    }, 20000);
+    setTimeout(() => {
       fs.unlinkSync(r);
           console.log("File removed:", r);
-    }, 20000);*/
+    }, 20000);
   };
 
-  //p(docxFile)
+ 
 
  
 var tf = async function (x, y) {
     if (path.extname(x)=='.docx') {
-        await p(x, y)
+        await p(x,y)
       }else if (path.extname(x)=='.pdf'){
         let dataBuffer = fs.readFileSync(x);
         pdf(dataBuffer).then(function(data) {
@@ -124,7 +126,7 @@ var tf = async function (x, y) {
             if (err) throw err;
             console.log('number of pages copied successfully');
           });
-          
+          //console.log(pages)
             
             //write page number to txt file (create txt file with username)
         })
@@ -133,5 +135,5 @@ var tf = async function (x, y) {
       }
 }
 
-//tf(docxFile5)
+//tf(docxFile)
 module.exports = tf
