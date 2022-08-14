@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "docx-pdf": "^0.0.1",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
     "file-size": "^1.0.0",
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.13.0",
