@@ -13,8 +13,7 @@ const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 
-var d = async function (x) {
-   try {
+var d = function (x) {
     function fileN (x) {
         if (path.extname(x)=='.docx') {
             var filename = path.basename(x, '.docx');
@@ -44,13 +43,13 @@ var d = async function (x) {
       fileSize(x, txtPath);
       contactdetails(x, txtPath);
       linknD(x, txtPath);
-      wordcount(x, txtPath);
+      //wordcount(x, txtPath);
       filetype(x, txtPath);
       pagecount(x, txtPath);
     
          setTimeout(() => {
             pdf(txtPath2)
-          }, 38000);
+          }, 45000);
          
           
     
@@ -61,11 +60,8 @@ var d = async function (x) {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
       }, 20000);*/
-   } catch (error) {
-     console.log (error)
-   }
-
-};
+   } 
 
 
-d(docxFile)
+//d(testFile)
+module.exports = d

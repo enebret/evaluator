@@ -3,10 +3,26 @@ const fs = require('fs')
 const path = require('path')
 const app = express()
 const port = 3000
-const multer = require('multer');
-const upload = multer({dest:'uploads/'}).single("demo_file");
-var fileupload = require('fileupload').createFileUpload('/uploadDir').middleware
+const ld = require('../main.js');
+let pc = path.resolve('searchfile.js')
+const moveF = require(pc);
 const fileUpload = require('express-fileupload');
+const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
+
+/*fs.readdir(__dirname, (err, files) => {
+
+files.forEach(file=>{
+  if(path.extname(file)=='.pdf' || path.extname(file)=='.docx'){
+      ;
+      console.log(path.resolve(__dirname+'/'+file))
+ 
+  }
+})
+
+});*/
+
+/*const yf = path.resolve(__dirname, '..', '..')+ '/searchfile.js';
+console.log(path.resolve('searchfile.js') )*/
 
 app.use(fileUpload());
 app.get('/', (req, res) => {
@@ -23,14 +39,26 @@ app.post('/', function(req, res) {
   
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     sampleFile = req.files.demo_file;
-    uploadPath = __dirname + '/up' + sampleFile.name;
-  
+    uploadPath =  sampleFile.name
+  ///sampleFile.name;
     // Use the mv() method to place the file somewhere on your server
     sampleFile.mv(uploadPath, function(err) {
       if (err)
         return res.status(500).send(err);
   
       res.send('File uploaded!');
+      moveF();
+      setTimeout(() => {
+        fs.readdir(__dirname, (err, files) => {
+          files.forEach(file=>{
+          if(path.extname(file)=='.pdf' || path.extname(file)=='.docx'){
+          let p = path.resolve(__dirname+'/'+file);
+          ld(p)
+        }
+      })
+    
+    })
+      }, 10000);;
     });
   });
 
