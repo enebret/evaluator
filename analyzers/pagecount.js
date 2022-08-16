@@ -19,9 +19,60 @@ const path = require('path');
 var textract = require('textract');
 const pdf = require('pdf-parse');
 const docxConverter = require('docx-pdf');
+const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
 
 
-    
+var q = function (x) {docxConverter(x,'./output.pdf',function(err,result){
+if(err){
+   console.log(err);
+  }
+ console.log('result'+result);
+});}
+
+var p = function (x, y) {
+  if (path.extname(x)=='.docx') {
+    q(x);
+    setTimeout(() => {
+      let dataBuffer = fs.readFileSync('./output.pdf');
+      pdf(dataBuffer).then(function(data) {
+        var pages = data.numpages
+        console.log(pages)
+        fs.appendFile(y, `pages: ${pages}`+'\n', function (err) {
+          if (err) throw err;
+          console.log('number of pages copied successfully');
+        });
+          //write page number to txt file (create txt file with username)
+      })
+  }, 10000);
+  setTimeout(() => {
+    fs.unlinkSync('./output.pdf');
+        console.log("File removed:");
+  }, 20000);
+  } else {
+    setTimeout(() => {
+      let dataBuffer = fs.readFileSync('./output.pdf');
+      pdf(dataBuffer).then(function(data) {
+        var pages = data.numpages
+        console.log(pages)
+        fs.appendFile(y, `pages: ${pages}`+'\n', function (err) {
+          if (err) throw err;
+          console.log('number of pages copied successfully');
+        });
+          //write page number to txt file (create txt file with username)
+      })
+  }, 5000);
+
+};
+  }
+  
+  module.exports = p
+
+//p(doc)
+
+/*main().catch(function (err) {
+    console.log(`Error converting file: ${err}`);
+});*/
+
     /*fs.readdir(testFolder, (err, files) => {
       let r= files.map(file => {
         return file;
@@ -68,7 +119,7 @@ pdf(dataBuffer).then(function(data) {
   console.log(pdfPath)*/
 
   
-  async function pageNumber (x) {
+  /*async function pageNumber (x) {
 
        
        if(path.extname(x)=='.docx') {
@@ -135,5 +186,8 @@ var tf = async function (x, y) {
       }
 }
 
-//tf(docxFile)
-module.exports = tf
+tf(doc)
+//module.exports = tf*/
+
+
+

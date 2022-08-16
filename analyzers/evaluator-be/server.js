@@ -1,4 +1,4 @@
-const express = require('express')
+  const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const app = express()
@@ -53,12 +53,16 @@ app.post('/', function(req, res) {
           files.forEach(file=>{
           if(path.extname(file)=='.pdf' || path.extname(file)=='.docx'){
           let p = path.resolve(__dirname+'/'+file);
-          //ld(p)
+          ld(p);
+           setTimeout(() => {
+            fs.unlinkSync(p);
+            console.log("file removed.");
+           }, 50000);
         }
       })
     
     })
-      }, 10000);;
+      }, 10000);
     });
   });
 

@@ -9,6 +9,7 @@ const txt = './HARRY AKHALUODE CV.txt';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const txt2 = './E.I.O.txt'
 const { textTransform } = require('text-transform');
+const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
 
 let pdf = function (x) {
         const data = fs.readFileSync(x, 'utf8');
@@ -24,11 +25,12 @@ let pdf = function (x) {
          if(filename){
           var fonts = {
             Roboto: {
+              //C:/xjv/evaluator/analyzers/fonts/roboto.regular.ttf
               //"C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf"
-              normal: 'C:/xjv/evaluator/analyzers/fonts/roboto.regular.ttf',
-              bold: 'C:/xjv/evaluator/analyzers/fonts/roboto.medium.ttf',
-              italics: 'C:/xjv/evaluator/analyzers/fonts/roboto.italic.ttf',
-              bolditalics: 'C:/xjv/evaluator/analyzers/fonts/roboto.medium-italic.ttf'
+              normal: 'C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf',
+              bold: 'C:/usr/evaluator/analyzers/fonts/roboto.medium.ttf',
+              italics: 'C:/usr/evaluator/analyzers/fonts/roboto.italic.ttf',
+              bolditalics: 'C:/usr/evaluator/analyzers/fonts/roboto.medium-italic.ttf'
             }
           };
           

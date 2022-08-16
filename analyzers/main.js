@@ -13,9 +13,9 @@ const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
-console.log(doc)
+//console.log(doc)
 
-/*var d = function (x) {
+var d = function (x) {
     function fileN (x) {
         if (path.extname(x)=='.docx') {
             var filename = path.basename(x, '.docx');
@@ -45,9 +45,9 @@ console.log(doc)
       fileSize(x, txtPath);
       contactdetails(x, txtPath);
       linknD(x, txtPath);
-      //wordcount(x, txtPath);
+      wordcount(x, txtPath);
       filetype(x, txtPath);
-      pagecount(x, txtPath);
+      //pagecount(x, txtPath);
     
          setTimeout(() => {
             pdf(txtPath2)
@@ -61,9 +61,10 @@ console.log(doc)
       /*setTimeout(() => {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
-      }, 20000);
+      }, 20000);*/
    } 
 
 
-d(testFile)*/
-//module.exports = d
+//d(doc)
+
+module.exports = d
