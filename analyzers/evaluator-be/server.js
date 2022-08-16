@@ -53,7 +53,7 @@ app.post('/', function(req, res) {
           files.forEach(file=>{
           if(path.extname(file)=='.pdf' || path.extname(file)=='.docx'){
           let p = path.resolve(__dirname+'/'+file);
-          ld(p)
+          //ld(p)
         }
       })
     
@@ -75,5 +75,5 @@ app.post('/', function(req, res) {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port at url http://localhost:${port}`)
+  console.log(`app listening on port at url http://localhost:${port}`)
 })

@@ -12,8 +12,10 @@ const { clearInterval } = require( 'timers' );
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
+const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
+console.log(doc)
 
-var d = function (x) {
+/*var d = function (x) {
     function fileN (x) {
         if (path.extname(x)=='.docx') {
             var filename = path.basename(x, '.docx');
@@ -59,9 +61,9 @@ var d = function (x) {
       /*setTimeout(() => {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
-      }, 20000);*/
+      }, 20000);
    } 
 
 
-//d(testFile)
-module.exports = d
+d(testFile)*/
+//module.exports = d
