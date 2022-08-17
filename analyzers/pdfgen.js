@@ -10,7 +10,8 @@ const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const txt2 = './E.I.O.txt'
 const { textTransform } = require('text-transform');
 const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
-
+//var g = {a: path.join(__dirname, 'fonts/roboto.regular.ttf'), b: path.join(__dirname, 'fonts/roboto.medium.ttf'), c: path.join(__dirname, 'fonts/roboto.italic.ttf'), d: path.join(__dirname, 'fonts/roboto.medium-italic.ttf')}
+  
 let pdf = function (x) {
         const data = fs.readFileSync(x, 'utf8');
         var split = data.split('\n');
@@ -25,12 +26,10 @@ let pdf = function (x) {
          if(filename){
           var fonts = {
             Roboto: {
-              //C:/xjv/evaluator/analyzers/fonts/roboto.regular.ttf
-              //"C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf"
-              normal: 'C:/usr/evaluator/analyzers/fonts/roboto.regular.ttf',
-              bold: 'C:/usr/evaluator/analyzers/fonts/roboto.medium.ttf',
-              italics: 'C:/usr/evaluator/analyzers/fonts/roboto.italic.ttf',
-              bolditalics: 'C:/usr/evaluator/analyzers/fonts/roboto.medium-italic.ttf'
+              normal: path.join(__dirname, 'fonts/roboto.regular.ttf'),
+              bold: path.join(__dirname, 'fonts/roboto.medium.ttf'),
+              italics: path.join(__dirname, 'fonts/roboto.italic.ttf'),
+              bolditalics: path.join(__dirname, 'fonts/roboto.medium-italic.ttf')
             }
           };
           
@@ -240,5 +239,5 @@ let pdf = function (x) {
 
 }
 
-//pdf(txt)
-module.exports = pdf
+pdf(txt)
+//module.exports = pdf
