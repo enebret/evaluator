@@ -239,5 +239,5 @@ let pdf = function (x) {
 
 }
 
-pdf(txt)
-//module.exports = pdf
+//pdf(txt)
+module.exports = pdf
