@@ -47,7 +47,7 @@ var d = function (x) {
       linknD(x, txtPath);
       wordcount(x, txtPath);
       filetype(x, txtPath);
-      //pagecount(x, txtPath);
+      pagecount(x, txtPath);
     
          setTimeout(() => {
             pdf(txtPath2)

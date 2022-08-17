@@ -45,7 +45,7 @@ let pdf = function (x) {
               {text: 'It is a good practice to have your first and last name in the file name of your resume. Email clients can mark generic file names as suspicious. Adding your name ensures your resume will be found easy and assigned to the right application.'},
               {text: 'File Size', style: 'header'},
               {text: `Your resume file size is ${filesize}.`},
-              {text: 'The common file size limit for website uploads is under 2 mB. If your resume is too large, we recommend removingany custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.'},
+              {text: 'The common file size limit for website uploads is under 2 mB. If your resume is too large, we recommend removing any custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.'},
               {text: 'Word Count', style: 'header'},
               {text: `Your resume contains ${wordcount} words.`},
               {text: 'This is the number of words we found in your resume. Try to always keep it between 400 and 800 words.Generally, over 800 words is considered too long a resume.(more than 2 pages or too crammed), and less than 400 words is too short or empty.'},
