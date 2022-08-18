@@ -14,7 +14,6 @@ const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
 //console.log(doc)
-
 var d = function (x) {
     function fileN (x) {
         if (path.extname(x)=='.docx') {
@@ -54,7 +53,18 @@ var d = function (x) {
           }, 45000);
          
           
-    
+   setTimeout(() => {
+    const yf = path.resolve(__dirname, '..');
+    fs.readdir(yf, (err, files) => {
+    files.forEach(file=>{
+    if(path.extname(file)=='.pdf' || path.extname(file)=='.txt'){
+      let op = path.resolve(file)
+      fs.unlinkSync(op);
+      console.log("file removed.");
+          }
+        })
+      });
+   }, 120000);
           
 
       
@@ -68,3 +78,7 @@ var d = function (x) {
 //d(doc)
 
 module.exports = d
+
+   
+
+      

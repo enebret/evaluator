@@ -9,17 +9,9 @@ const moveF = require(pc);
 const fileUpload = require('express-fileupload');
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 
-/*fs.readdir(__dirname, (err, files) => {
 
-files.forEach(file=>{
-  if(path.extname(file)=='.pdf' || path.extname(file)=='.docx'){
-      ;
-      console.log(path.resolve(__dirname+'/'+file))
- 
-  }
-})
 
-});*/
+
 
 /*const yf = path.resolve(__dirname, '..', '..')+ '/searchfile.js';
 console.log(path.resolve('searchfile.js') )*/
@@ -66,6 +58,20 @@ app.post('/', function(req, res) {
     });
   });
 
+  app.get('/download', function(req, res){
+    const yf = path.resolve(__dirname, '..', '..');
+    fs.readdir(yf, (err, files) => {
+    files.forEach(file=>{
+    if(path.extname(file)=='.pdf'){
+      let op = path.resolve(file)
+        res.download(op, function(error){
+        console.log("Error : ", error)
+              })
+          }
+        })
+      });
+    })
+    
 /*app.post("/", (req, res) => {
     upload(req, res, (err) => {
      if(err) {

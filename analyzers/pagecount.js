@@ -43,11 +43,11 @@ var p = function (x, y) {
         });
           //write page number to txt file (create txt file with username)
       })
-  }, 20000);
+  }, 25000);
   setTimeout(() => {
     fs.unlinkSync('./output.pdf');
         console.log("File removed:");
-  }, 20000);
+  }, 30000);
   } else {
     setTimeout(() => {
       let dataBuffer = fs.readFileSync(x);
