@@ -34,7 +34,7 @@ app.post('/', function(req, res) {
     uploadPath =  sampleFile.name
   ///sampleFile.name;
     // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv(uploadPath, function(err) {
+    /*sampleFile.mv(uploadPath, function(err) {
       if (err)
         return res.status(500).send(err);
   
@@ -55,11 +55,12 @@ app.post('/', function(req, res) {
     
     })
       }, 10000);
-    });
+    });*/
+
   });
 
   app.get('/download', function(req, res){
-    const yf = path.resolve(__dirname, '..', '..');
+    const yf = path.resolve(__dirname, 20, '..');
     fs.readdir(yf, (err, files) => {
     files.forEach(file=>{
     if(path.extname(file)=='.pdf'){
