@@ -46,7 +46,7 @@ app.post('/upload', function(req, res) {
   
       res.send('File uploaded!');
       moveF();
-      /*setTimeout(() => {
+      setTimeout(() => {
         fs.readdir(__dirname, (err, files) => {
           files.forEach(file=>{
           if(path.extname(file)=='.pdf' || path.extname(file)=='.docx'){
@@ -60,7 +60,7 @@ app.post('/upload', function(req, res) {
       })
     
     })
-      }, 10000);*/
+      }, 10000);
     });
 
   });

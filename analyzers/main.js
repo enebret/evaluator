@@ -68,10 +68,10 @@ var d = function (x) {
           
 
       
-      /*setTimeout(() => {
+      setTimeout(() => {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
-      }, 20000);*/
+      }, 70000);
    } 
 
 
