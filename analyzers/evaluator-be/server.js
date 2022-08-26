@@ -2,7 +2,8 @@
 const fs = require('fs')
 const path = require('path')
 const app = express()
-const port = 3000
+const port = 3005
+var cors = require('cors')
 const ld = require('../main.js');
 let pc = path.resolve('searchfile.js')
 const moveF = require(pc);
@@ -17,11 +18,16 @@ const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 console.log(path.resolve('searchfile.js') )*/
 
 app.use(fileUpload());
+app.use(cors())
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.post('/', function(req, res) {
+app.post('/upload', function(req, res) {
+  console.log(req.body.name)
+  console.log(req.body.email)
+  //console.log(req.body)
+  //res.send('file uploaded');
     let sampleFile;
     let uploadPath;
   
@@ -29,18 +35,18 @@ app.post('/', function(req, res) {
       return res.status(400).send('No files were uploaded.');
     }
   
-    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    sampleFile = req.files.demo_file;
+    
+    sampleFile = req.files.file;
     uploadPath =  sampleFile.name
   ///sampleFile.name;
     // Use the mv() method to place the file somewhere on your server
-    /*sampleFile.mv(uploadPath, function(err) {
+    sampleFile.mv(uploadPath, function(err) {
       if (err)
         return res.status(500).send(err);
   
       res.send('File uploaded!');
       moveF();
-      setTimeout(() => {
+      /*setTimeout(() => {
         fs.readdir(__dirname, (err, files) => {
           files.forEach(file=>{
           if(path.extname(file)=='.pdf' || path.extname(file)=='.docx'){
@@ -54,8 +60,8 @@ app.post('/', function(req, res) {
       })
     
     })
-      }, 10000);
-    });*/
+      }, 10000);*/
+    });
 
   });
 
