@@ -13,10 +13,16 @@ const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 
 
 
-
-/*const yf = path.resolve(__dirname, '..', '..')+ '/searchfile.js';
-console.log(path.resolve('searchfile.js') )*/
-
+//+ '/searchfile.js'
+/*const yf = path.resolve(__dirname, '..', '..');
+//console.log(path.resolve('searchfile.js') )
+fs.readdir(yf, (err, files) => {
+  files.forEach(file=>{
+    if(path.extname(file)=='.pdf'){
+      let op = path.resolve(file)
+      console.log(op)
+    }
+})})*/
 app.use(fileUpload());
 app.use(cors())
 app.get('/', (req, res) => {
@@ -66,7 +72,7 @@ app.post('/upload', function(req, res) {
   });
 
   app.get('/download', function(req, res){
-    const yf = path.resolve(__dirname, 20, '..');
+    const yf = path.resolve(__dirname, '..', '..');
     fs.readdir(yf, (err, files) => {
     files.forEach(file=>{
     if(path.extname(file)=='.pdf'){
@@ -74,6 +80,7 @@ app.post('/upload', function(req, res) {
         res.download(op, function(error){
         console.log("Error : ", error)
               })
+              //res.send('sent file!')
           }
         })
       });
