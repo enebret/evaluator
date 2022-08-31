@@ -27,6 +27,9 @@ app.use(fileUpload());
 app.use(cors())
 app.get('/', (req, res) => {
   res.send('Hello World!')
+  var furl = req.protocol + "://" + 
+    req.hostname + req.originalUrl;
+    console.log(furl)
 })
 
 app.post('/upload', function(req, res) {
@@ -99,5 +102,6 @@ app.post('/upload', function(req, res) {
 
 
 app.listen(port, () => {
-  console.log(`app listening on port at url http://localhost:${port}`)
+  //at url http://localhost:
+  console.log(`app listening on port ${port}`)
 })
