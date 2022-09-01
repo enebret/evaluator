@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 var textract = require('textract');
 const pdf = require('pdf-parse');
-const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
+var count = require('word-count')
+const docxFile = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
 const docxFile4 = 'c:/Users/a_cb/Documents/E.I.O.pdf';
 const docxFile3 = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 
@@ -19,6 +20,7 @@ let wc = function (x, y) {
             
         })
         var lent = fg.length
+        //console.log(lent)
         fs.appendFile(y, `wordcount: ${lent}`+'\n', function (err) {
             if (err) throw err;
             console.log('word count copied successfully.');
@@ -32,13 +34,14 @@ let wc = function (x, y) {
             let rp = data.text.trim().replace(/[\r\n]/gm, '').split(" ");
             let fg = []
            rp.forEach((x)=>{
-                if(x.length>1) {
+                if(x.length>1 ) {
                     fg.push(x)
                 }
                 
             })
             var lent = fg.length
             console.log(lent)
+            //console.log(data.text)
             fs.appendFile(y, `wordcount: ${lent}`+'\n', function (err) {
                 if (err) throw err;
                 console.log('word count copied successfully.');
@@ -52,4 +55,4 @@ let wc = function (x, y) {
 };
 
 module.exports = wc
-//wc(docxFile3)
+//wc(docxFile)

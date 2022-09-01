@@ -44,16 +44,16 @@ var d = function (x) {
       fileSize(x, txtPath);
       contactdetails(x, txtPath);
       linknD(x, txtPath);
-      wordcount(x, txtPath);
       filetype(x, txtPath);
       pagecount(x, txtPath);
-    
+      wordcount(x, txtPath);
+
          setTimeout(() => {
             pdf(txtPath2)
           }, 45000);
          
           
-   setTimeout(() => {
+   /*setTimeout(() => {
     const yf = path.resolve(__dirname, '..');
     fs.readdir(yf, (err, files) => {
     files.forEach(file=>{
@@ -64,7 +64,7 @@ var d = function (x) {
           }
         })
       });
-   }, 120000);
+   }, 120000);*/
           
 
       
@@ -75,9 +75,9 @@ var d = function (x) {
    } 
 
 
-//d(doc)
+d(doc)
 
-module.exports = d
+//module.exports = d
 
    
 
