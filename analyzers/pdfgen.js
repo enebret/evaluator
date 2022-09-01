@@ -20,10 +20,21 @@ let pdf = function (x) {
         var lt = split[1].length - 3;
         var filename = path.basename(x, '.txt');
         var filesize = split[2].slice(Number(split[2].indexOf(':'))+2, split[2].length)
-        var wordcount = split[7].slice(11, split[7].length)
-        var pages = split[6].slice(Number(split[6].indexOf(':'))+2, split[6].length);
-        console.log(wordcount)
-    
+        //var wordcount = split[7].slice(11, split[7].length)
+        //var pages = split[6].slice(Number(split[6].indexOf(':'))+2, split[6].length);
+        let [sp, pg, wc, ...rest] = split.reverse();
+        var pages;
+        var wordcount;
+        [pg, wc].forEach(x=>{
+          if (x.indexOf('w')==0) {
+            //console.log(x);
+            wordcount = x;
+          } else if (x.indexOf('p')==0) {
+            //console.log(x)
+            pages = x;
+          }
+        });
+      
          if(filename){
           var fonts = {
             Roboto: {
@@ -36,7 +47,10 @@ let pdf = function (x) {
           
          
           var printer = new PdfPrinter(fonts);
-        
+          var msg;
+          let wcn = Number((wordcount.slice(Number(wordcount.indexOf(':'))+2, wordcount.length)));
+          let pgn = Number(pages.slice(Number(pages.indexOf(':'))+2, pages.length));
+          wcn < 400? (msg = 'Your wordcount is below the recommended number. Try to elaborate more on achievements and past experience.') : (msg = 'Your wordcount is above 400 words. Ensure that it does not exceed the range which is 600 words.');
           
           var docDefinition = {
             content: [
@@ -49,7 +63,7 @@ let pdf = function (x) {
               {text: 'The common file size limit for website uploads is under 2 mB. If your resume is too large, we recommend removing any custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.'},
               {text: 'Word Count', style: 'header'},
               {text: `Your resume contains ${wordcount} words.`},
-              {text: 'This is the number of words we found in your resume. Try to always keep it between 400 and 800 words.Generally, over 800 words is considered too long a resume.(more than 2 pages or too crammed), and less than 400 words is too short or empty.'},
+              {text: `${msg}`},
               {text: 'Page Count', style: 'header'},
               {text: `Your resume is ${pages} page/pages long.`},
               {text: 'It is important to nail the right resume length. More than two pages and the recruiter will not read through your resume, whereas, if it is too short, it will undersell you'}
@@ -77,5 +91,5 @@ let pdf = function (x) {
        
 }
 
-//pdf(txt3)
-module.exports = pdf
+pdf(txt)
+//dule.exports = pdf

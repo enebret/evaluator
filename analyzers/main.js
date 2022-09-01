@@ -48,9 +48,9 @@ var d = function (x) {
       pagecount(x, txtPath);
       wordcount(x, txtPath);
 
-         setTimeout(() => {
+         /*setTimeout(() => {
             pdf(txtPath2)
-          }, 45000);
+          }, 45000);*/
          
           
    /*setTimeout(() => {
@@ -75,7 +75,7 @@ var d = function (x) {
    } 
 
 
-d(docxFile5)
+d(testFile)
 
 //module.exports = d
 
