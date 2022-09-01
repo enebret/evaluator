@@ -10,7 +10,7 @@ const path = require('path');
 const linknD = require ('./linkfinder.js');
 const { clearInterval } = require( 'timers' );
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
-const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
+const docxFile5 = 'c:/Users/a_cb/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
 //console.log(doc)
@@ -68,14 +68,14 @@ var d = function (x) {
           
 
       
-      setTimeout(() => {
+      /*setTimeout(() => {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
-      }, 70000);
+      }, 70000);*/
    } 
 
 
-d(doc)
+d(docxFile5)
 
 //module.exports = d
 

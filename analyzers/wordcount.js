@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 var textract = require('textract');
 const pdf = require('pdf-parse');
-var count = require('word-count')
+
 const docxFile = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
 const docxFile4 = 'c:/Users/a_cb/Documents/E.I.O.pdf';
 const docxFile3 = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
