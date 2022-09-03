@@ -9,7 +9,7 @@ function fileS (x, y) {
     var stats = fs.statSync(x);
     var fileS = filesize(stats.size).human('si');
     //console.log(filesize(stats.size).human('si'))
-    fs.appendFile(y, `Filesize: ${fileS}`+'\n', function (err) {
+    fs.appendFile(y, `size: ${fileS}`+'\n', function (err) {
         if (err) throw err;
         console.log('File size is copied successfully.');
       });
