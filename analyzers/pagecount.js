@@ -44,7 +44,7 @@ var p = function (x, y) {
         });
           //write page number to txt file (create txt file with username)
       })
-  }, 35000);
+  }, 36000);
   setTimeout(() => {
     fs.unlinkSync('./output.pdf');
         console.log("File removed:");

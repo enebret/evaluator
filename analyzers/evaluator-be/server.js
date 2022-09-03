@@ -9,22 +9,21 @@ let pc = path.resolve('searchfile.js')
 const moveF = require(pc);
 const fileUpload = require('express-fileupload');
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
+const rateLimit = require('express-rate-limit')
 
+const limits = rateLimit({
+  //30 * 60 * 1000, // 30 minutes
+  windowMs: 2 * 60 * 1000, // 30 minutes
+  max: 1,
+  delayMs: 0, // disabled
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, 
+});
 
-
-
-//+ '/searchfile.js'
-/*const yf = path.resolve(__dirname, '..', '..');
-//console.log(path.resolve('searchfile.js') )
-fs.readdir(yf, (err, files) => {
-  files.forEach(file=>{
-    if(path.extname(file)=='.pdf'){
-      let op = path.resolve(file)
-      console.log(op)
-    }
-})})*/
 app.use(fileUpload());
-app.use(cors())
+app.use(cors());
+app.use('/upload', limits);
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
   var furl = req.protocol + "://" + 
@@ -33,6 +32,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/upload', function(req, res) {
+  
   console.log(req.body.name)
   console.log(req.body.email)
   //console.log(req.body)
@@ -71,7 +71,7 @@ app.post('/upload', function(req, res) {
     })
       }, 10000);
     });
-
+    lock = false;
   });
 
   app.get('/download', function(req, res){
