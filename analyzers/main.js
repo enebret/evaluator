@@ -75,9 +75,9 @@ var d = function (x) {
    } 
 
 
-d(docxFile)
+//d(docxFile)
 
-//module.exports = d
+module.exports = d
 
    
 
