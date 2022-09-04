@@ -13,9 +13,9 @@ const rateLimit = require('express-rate-limit')
 
 const limits = rateLimit({
   //30 * 60 * 1000, // 30 minutes
-  windowMs: 2 * 60 * 1000, // 30 minutes
+  windowMs: 4 * 60 * 1000, // 30 minutes
   max: 1,
-  delayMs: 0, // disabled
+  delayMs: 240000, // disabled
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, 
 });
@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
     req.hostname + req.originalUrl;
     console.log(furl)
 })
+
+
 
 app.post('/upload', function(req, res) {
   
