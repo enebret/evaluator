@@ -64,7 +64,7 @@ app.post('/upload', function(req, res) {
            setTimeout(() => {
             fs.unlinkSync(p);
             console.log("file removed.");
-           }, 50000);
+           }, 45000);
         }
       })
     
