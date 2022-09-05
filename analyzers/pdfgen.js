@@ -1,11 +1,9 @@
 const PDFDocument = require('pdfkit');
 const doc = new PDFDocument;
 const fs = require('fs');
-//var PdfPrinter = require('pdfmake');
+const moment = require('moment');
 const path = require('path');
-var filesize = require('file-size');
-
-
+const dc = moment().format('MMMM Do YYYY, h:mm:ss a')
 const txt = './SALAHU AHMED CV-3 (1).txt';
 const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const txt2 = './E.I.O.txt';
@@ -53,22 +51,23 @@ let pdf = function (x) {
           var lgn;
           var lkn = (LinkedIn.slice(Number(LinkedIn.indexOf(':'))+2, LinkedIn.length))
           var sg = filesize.slice(filesize.length-2, filesize.length);
+          var sgq = filesize.slice(Number(filesize.indexOf(':')+2, filesize.length));
           var sgn;
           let wcn = Number((wordcount.slice(Number(wordcount.indexOf(':'))+2, wordcount.length)));
           let pgn = Number(pages.slice(Number(pages.indexOf(':'))+2, pages.length));
           wcn < 400? (msg = 'The total word-count of your resume accessed falls below the recommended number. Try to elaborate more on achievements and past experience.') : wcn < 600? (msg = 'The total word-count accessed falls within the recommended range.') : (msg = 'The total word-count exceeds the recommended range. Try to summarize your experiences and achievements.')
-          pgn === 1 ? (psg = 'Your resume is 1 page long. This maybe too short. Try to make it 2 pages.') : pgn === 2 ? (psg = 'Your resume is 2 pages long which is the recommended number of pages required in a standard resume.') : (psg = 'Your resume exceeds the recommended number of pages required.Try to use each page more efficiently. You can use our CV services to achieve this in approx. 2 minutes. No registration required.')
-          sg == 'kB'? (sgn = 'Your resume falls within the recommended size estimate.') : (sgn = 'Your file is too large. We recommend removing any custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.')
-          lkn == 'No LinkedIn link found.'? (lgn = 'Your resume file has no LinkedIn link.') : (lgn = 'A link to your LinkedIn was found.')
+          pgn === 1 ? (psg = 'The resume is 1 page long. This maybe too short. Try to make it 2 pages.') : pgn === 2 ? (psg = 'The resume is 2 pages long which is the recommended number of pages required in a standard resume.') : (psg = 'The resume exceeds the recommended number of pages required.Try to use each page more efficiently. You can use our CV services to achieve this in approx. 2 minutes. No registration required.')
+          sg == 'kB'? (sgn = 'The resume falls within the recommended size estimate.') : (sgn = 'The file is too large. We recommend removing any custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.')
+          lkn == 'No LinkedIn link found.'? (lgn = 'The resume file has no LinkedIn link.') : (lgn = 'The file contains a LinkedIn link.')
           doc.font('Times-Bold').text('FILE NAME', {
             width: 410,
             align: 'left',
-            fontSize: 20,
+            fontSize: 18,
             bold: true
           }
           )
           var lorem = 'It is a good practice to have your first and last name in the file name of your resume. Email clients can mark generic file names as suspicious. Adding your name ensures your resume will be found easily and assigned to the right application.'
-          doc.font('Times-Roman').text(`Your resume file is named ${filename}. ${lorem}`, {
+          doc.font('Times-Roman').text(`The file is named ${filename}. ${lorem}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -79,11 +78,11 @@ let pdf = function (x) {
           doc.font('Times-Bold').text('FILE SIZE', {
             width: 410,
             align: 'left',
-            fontSize: 20,
+            fontSize: 18,
             bold: true
           }
           )
-          var vorem = `The resume file size is ${filesize}.`
+          var vorem = `Recorded file size is ${sgq}.`
           doc.font('Times-Roman').text(` ${vorem} ${sgn}`, {
             width: 410,
             align: 'left',
@@ -92,10 +91,10 @@ let pdf = function (x) {
           }
           )
           doc.moveDown();
-          doc.font('Times-Bold').text('WORD-COUNT', {
+          doc.font('Times-Bold').text('WORD COUNT', {
             width: 410,
             align: 'left',
-            fontSize: 20,
+            fontSize: 18,
             bold: true
           }
           )
@@ -112,7 +111,7 @@ let pdf = function (x) {
           doc.font('Times-Bold').text('PAGE COUNT', {
             width: 410,
             align: 'left',
-            fontSize: 20,
+            fontSize: 18,
             bold: true
           }
           )
@@ -129,7 +128,7 @@ let pdf = function (x) {
           doc.font('Times-Bold').text('SOCIAL LINKS', {
             width: 410,
             align: 'left',
-            fontSize: 20,
+            fontSize: 18,
             bold: true
           }
           )
@@ -139,6 +138,16 @@ let pdf = function (x) {
             align: 'left',
             align: 'justify',
             fontSize: 18
+          }
+          )
+
+          doc.moveDown();
+          let ln = 'Date of review:'
+           doc.font('Times-Roman').fillColor('red').text(`${ln} ${dc}`, {
+            width: 410,
+            align: 'left',
+            align: 'justify',
+            fontSize: 12
           }
           )
           doc.pipe(fs.createWriteStream(`${filename}.pdf`));
