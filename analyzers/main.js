@@ -48,12 +48,12 @@ var d = function (x) {
       pagecount(x, txtPath);
       wordcount(x, txtPath);
       fileSize(x, txtPath);
-         setTimeout(() => {
+         /*setTimeout(() => {
             pdf(txtPath2)
-          }, 45000);
+          }, 45000);*/
          
           
-   setTimeout(() => {
+   /*setTimeout(() => {
     const yf = path.resolve(__dirname, '..');
     fs.readdir(yf, (err, files) => {
     files.forEach(file=>{
@@ -64,20 +64,20 @@ var d = function (x) {
           }
         })
       });
-   }, 120000);
+   }, 120000);*/
           
 
       
-      setTimeout(() => {
+      /*setTimeout(() => {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
-      }, 70000);
+      }, 70000);*/
    } 
 
 
-//d(docxFile)
+d(docxFile)
 
-module.exports = d
+//module.exports = d
 
    
 
