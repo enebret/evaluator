@@ -5,6 +5,7 @@ const contactdetails = require ('./contactdata.js');
 const wordcount = require ('./wordcount.js');
 const pagecount = require ('./pagecount.js');
 const filetype = require ('./filetype.js');
+const spellcheck = require ('./spellChecker.js')
 const pdf = require ('./pdfgen.js')
 const path = require('path');
 const linknD = require ('./linkfinder.js');
@@ -12,6 +13,7 @@ const { clearInterval } = require( 'timers' );
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const docxFile = 'c:/Users/LENOVO/Downloads/SALAHU AHMED CV-3 (1).pdf';
+const txt4 = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
 const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
 //console.log(doc)
 var d = function (x) {
@@ -48,6 +50,7 @@ var d = function (x) {
       pagecount(x, txtPath);
       wordcount(x, txtPath);
       fileSize(x, txtPath);
+      spellcheck(x,txtPath);
          /*setTimeout(() => {
             pdf(txtPath2)
           }, 45000);*/

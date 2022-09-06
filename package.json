@@ -22,6 +22,8 @@
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.13.0",
     "pdfmake": "^0.2.5",
+    "simple-spellchecker": "^1.0.2",
+    "spelling": "^2.0.2",
     "text-transform": "^0.1.2",
     "textract": "^2.5.0"
   }

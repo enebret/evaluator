@@ -17,32 +17,28 @@ function linknD (x, y) {
                 }
                 
             })
-            //console.table(fg);
-            //console.log(fg[22].slice(0,25))
             var lk = []
             fg.forEach((x)=>{
                 if(x.slice(0,25)=='https://www.linkedin.com/'){
-                    /*fs.appendFile(y, `LinkdIn link: ${x}`+'\n', function (err) {
-                        if (err) throw err;
-                        console.log('LinkedIn link copied successfully.');
-                      });*/
-                      console.log('LinkedIn link found successfully.')
-                    //console.log(x)
-                    //write link to txt file
-                } else {
-                    lk.push('No LinkndIn link found.')
+                   
+                      lk.push('LinkndIn link found.')
+                  
                     
                 }
-            });
+            })
             if (lk[0]) {
-                /*fs.appendFile(y, `LinkdIn link: ${lk[0]}`+'\n', function (err) {
+                fs.appendFile(y, `LinkdIn link: ${lk[0]}`+'\n', function (err) {
                     if (err) throw err;
-                    console.log('No social link found.');
-                  });*/
-                console.log(lk[0])
+                    console.log(lk[0]);
+                  });
+                
+            } else {
+                fs.appendFile(y, 'LinkdIn link: No LinkedIn link found.'+'\n', function (err) {
+                    if (err) throw err;
+                    console.log('No LinkedIn link found.')
+                  });
+                
             }
-            //margin of error should not be more than 10%
-            //write total amount of words to txt file
         })
         
     } else if (path.extname(x)=='.pdf') {
@@ -81,8 +77,7 @@ function linknD (x, y) {
                   });
                 
             }
-            //margin of error should not be more than 10%
-            //write total amount of words to txt file
+            
             
         })
         
