@@ -152,15 +152,15 @@ let pdf = function (x) {
           )
 
           doc.moveDown();
-          doc.font('Times-Bold').text('GRAMMAR/SPELLING CHECK', {
+          doc.font('Times-Bold').text('GRAMMAR CHECK', {
             width: 410,
             align: 'left',
             fontSize: 18,
             bold: true
           }
           )
-          var porem ='It is important to nail the right resume length. More than 2 pages and the recruiter will not read through your resume, whereas, if it is too short, it will undersell you.'
-          doc.font('Times-Roman').text(` ${psg}${porem}`, {
+          var S ='Using the right verbs, adjectives and adverbs will help to boost the quality and grammatical makeup of sentences. They will also not be flagged as incorrect. Try to use British English when constructing words and always add the ful meaning of abbreviations. Having a resume devoid of grammatical errors will prevent it from getting flagged by ATS'
+          doc.font('Times-Roman').text(` ${spl}${S}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -182,10 +182,11 @@ let pdf = function (x) {
          }
 
        
-          
+        //resume review report
+        //resume reviewed under the underlisted parameters 
      
        
 }
 
-pdf(txt)
-//module.exports = pdf
+//pdf(txt)
+module.exports = pdf

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 var textract = require('textract');
 const pdf = require('pdf-parse');
-//sulaman ubrahum cv ga
+
 const txt1 = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const txt2 = 'c:/Users/LENOVO/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const txt3 = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
@@ -23,15 +23,7 @@ function spellCheck (x, y) {
             var lk = []
             fg.forEach((x)=>{
                 if(/[a-zA-Z]/.test(x[0])){
-                    /*SpellChecker.getDictionary("en-US", function(err, dictionary) {
-                        if(!err) {
-                        var misspelled = ! dictionary.spellCheck(x);
-                        if(misspelled) {
-                            //console.log('misspelt!')
-                            lk.push(x)
-                            }
-                        }
-                    });*/ lk.push(x)
+                   lk.push(x)
                     
                 } 
             });
