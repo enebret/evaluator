@@ -28,6 +28,7 @@ let pdf = function (x) {
         var LinkedIn;
         var spellings;
         var ATS;
+        var RS;
         //console.log(pg, wc, lp, tq)
         [pg, wc, lp, tq, at].forEach(x=>{
           if (x.indexOf('w')==0) {
@@ -36,9 +37,9 @@ let pdf = function (x) {
           } else if (x.indexOf('p')==0) {
             //console.log(x)
             pages = x;
-          } else if (x.indexOf('L')==0) {
-            //LinkedIn = x;
-            console.log(x)
+          } else if (x.indexOf('r')==0) {
+            RS = x;
+            //console.log(x)
           } else if (x.indexOf('S')==0) {
             spellings = x;
             
@@ -57,12 +58,12 @@ let pdf = function (x) {
           }
         })
         
-       //let a = Number(ATS.slice(Number(ATS.indexOf(':')+2, ATS.length)))
-       
+       let r = RS.slice(Number(RS.indexOf(':')+2, RS.length))
+       //console.log(r==='Incomplete required sections found')
          if(filename){
         
           //var printer = new PdfPrinter(fonts);
-          
+          var rpg;
           var msg;
           var psg;
           var lgn;
@@ -76,6 +77,7 @@ let pdf = function (x) {
           let wcn = Number((wordcount.slice(Number(wordcount.indexOf(':'))+2, wordcount.length)));
           let pgn = Number(pages.slice(Number(pages.indexOf(':'))+2, pages.length));
           let a = Number(ATS.slice(Number(ATS.indexOf(':')+2, ATS.length)));
+          let r = RS.slice(Number(RS.indexOf(':')+2, RS.length))
           let finalscore = a.toString();
           wcn < 400? (msg = 'The total word-count of your resume accessed falls below the recommended number. Try to elaborate more on achievements and past experience.') : wcn < 600? (msg = 'The total word-count accessed falls within the recommended range.') : (msg = 'The total word-count exceeds the recommended range. Try to summarize your experiences and achievements.')
           pgn === 1 ? (psg = 'The resume is 1 page long. This maybe too short. Try to make it 2 pages.') : pgn === 2 ? (psg = 'The resume is 2 pages long which is the recommended number of pages required in a standard resume.') : (psg = 'The resume exceeds the recommended number of pages required.Try to use each page more efficiently. You can use our CV services to achieve this in approx. 2 minutes. No registration required.')
@@ -83,6 +85,7 @@ let pdf = function (x) {
           s == 'wrong spellings'? (spl = 'The resume file failed some spelling tests.') : (spl = 'The resume file has no spelling errors.')
           lkn == 'No LinkedIn link found.'? (lgn = 'The resume file has no LinkedIn link.') : (lgn = 'The file contains a LinkedIn link.');
           a < 80 ? (apg = 'You scored below the mark that should move your file on to a human recruiter.') : (apg = 'You passed the cut-off.');
+          r === 'Incomplete required sections found'? (rpg = 'The file contains missing/incomplete required sections.') : (rpg = 'The file contains the reuired sections.')
           doc.font('Times-Bold').text('FILE NAME', {
             width: 410,
             align: 'left',
@@ -91,7 +94,7 @@ let pdf = function (x) {
           }
           )
           var lorem = 'It is a good practice to have your first and last name in the file name of your resume. Email clients can mark generic file names as suspicious. Adding your name ensures your resume will be found easily and assigned to the right application.'
-          doc.font('Times-Roman').text(`The file is named ${filename}. ${lorem}`, {
+          doc.font('Times-Roman').text(`File is named ${filename}. ${lorem}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -174,7 +177,7 @@ let pdf = function (x) {
           }
           )
           var S ='Using the right verbs, adjectives and adverbs will help boost the quality and grammatical makeup of sentences. They will also not be flagged as incorrect. Try to use British English when constructing words and always add the full meaning of abbreviations. Having a resume devoid of grammatical errors will prevent it from getting flagged by ATS'
-          doc.font('Times-Roman').text(` ${spl}${S}`, {
+          doc.font('Times-Roman').text(` ${spl} ${S}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -182,6 +185,22 @@ let pdf = function (x) {
           }
           )
 
+          doc.moveDown();
+          doc.font('Times-Bold').text('REQUIRED SECTIONS', {
+            width: 410,
+            align: 'left',
+            fontSize: 18,
+            bold: true
+          }
+          )
+           var rvp = 'A well-organized resume that includes the appropriate elements and information can get a hiring manager\'s attention and help you earn a job interview.'
+          doc.font('Times-Roman').text(` ${rpg} ${rvp}`, {
+            width: 410,
+            align: 'left',
+            align: 'justify',
+            fontSize: 18
+          }
+          )
           doc.moveDown();
           doc.font('Times-Bold').text('ATS', {
             width: 410,
