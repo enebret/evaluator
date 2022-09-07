@@ -9,3 +9,4 @@ pages: 2
 wordcount: 416
 Spelling: wrong spellings
 rs: Incomplete required sections found
+ats total score: 40

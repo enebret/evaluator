@@ -66,17 +66,23 @@ function atsScore (x, y) {
                 let uniquespells = spellings.filter((x,y)=>spellings.indexOf(x)===y);
                 if( uniquespells[0]==='Objective' || uniquespells[0]==='OBJECTIVES' || uniquespells[0]==='OBJECTIVE' || uniquespells[0]==='Objectives' || uniquespells[0]==='SUMMARY' || uniquespells[0]==='Summary'){
                     score.push(40)
-                    console.log ('ats: score 40%')
+                    //console.log ('ats: score 40%')
                     
                 } else if (uniquespells[0]=='developed' || uniquespells[0]==='managed' || uniquespells[0]==='built' ) {
                     score.push(20)
-                    console.log('ats: score 20%')
+                    //console.log('ats: score 20%')
                 } 
                 
             };  if (score) {
                 let rp = filetype(x);
                 score.push(rp.toString());
-                console.log (score)
+                let totalscore = score.reduce((partialSum, a) => partialSum + a, 0);
+                fs.appendFile(y, `ats total score: ${totalscore}`+'\n', function (err) {
+                    if (err) throw err;
+                    console.log (`ats total score = ${totalscore}%`);
+                  });
+                  //console.log (`ats total score = ${totalscore}%`);
+                
             }
             
             else if(!score) {
@@ -131,17 +137,23 @@ function atsScore (x, y) {
                     let uniquespells = spellings.filter((x,y)=>spellings.indexOf(x)===y);
                     if( uniquespells[0]==='Objective' || uniquespells[0]==='OBJECTIVES' || uniquespells[0]==='OBJECTIVE' || uniquespells[0]==='Objectives' || uniquespells[0]==='SUMMARY' || uniquespells[0]==='Summary'){
                         score.push(40)
-                        console.log ('ats: score 40%')
+                        //console.log ('ats: score 40%')
                     } else if (uniquespells[0]=='developed' || uniquespells[0]==='managed' || uniquespells[0]==='built' ) {
                         score.push(20)
-                        console.log('ats: score 20%')
+                        //console.log('ats: score 20%')
                       
                     } 
                     //console.log(uniquespells)
                 }; if (score){
                     let rp = filetype(x);
                     score.push(Number(rp.toString()));
-                    console.log (score)
+                    let totalscore = score.reduce((partialSum, a) => partialSum + a, 0);
+                    fs.appendFile(y, `ats total score: ${totalscore}`+'\n', function (err) {
+                        if (err) throw err;
+                        console.log (`ats total score = ${totalscore}%`);
+                      });
+                    //console.log (`ats total score = ${totalscore}%`);
+                    
                 }
                 
                 else if(!score) {
@@ -153,4 +165,5 @@ function atsScore (x, y) {
     }
 };
 
-atsScore(txt2)
+//atsScore(txt1)
+module.exports = atsScore
