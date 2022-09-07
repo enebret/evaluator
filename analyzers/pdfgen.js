@@ -86,6 +86,25 @@ let pdf = function (x) {
           lkn == 'No LinkedIn link found.'? (lgn = 'The resume file has no LinkedIn link.') : (lgn = 'The file contains a LinkedIn link.');
           a < 80 ? (apg = 'You scored below the mark that should move your file on to a human recruiter.') : (apg = 'You passed the cut-off.');
           r === 'Incomplete required sections found'? (rpg = 'The file contains missing/incomplete required sections.') : (rpg = 'The file contains the reuired sections.')
+          
+          //logo
+          //heading
+          doc.font('Times-Bold').text('RESUME CRITIQUE', {
+            width: 410,
+            align: 'left',
+            fontSize: 18,
+            bold: true
+          }
+          )
+          
+          doc.font('Times-Roman').text('This free resume critique is intended to give you an honest, straightforward assessment, and some suggestions to help you in your job search. We are able to offer insight into how you compare to other job seekers competing for the same position because we review hundreds of resumes each month.', {
+            width: 410,
+            align: 'left',
+            align: 'justify',
+            fontSize: 18
+          }
+          )
+          doc.moveDown();
           doc.font('Times-Bold').text('FILE NAME', {
             width: 410,
             align: 'left',
