@@ -52,6 +52,7 @@ let pdf = function (x) {
         [...rest].forEach(x=>{
           if(x.indexOf('s')==0){
             filesize = x;
+            console.log(x)
           } else if (x.indexOf('L')==0) {
             LinkedIn = x;
             //console.log(x)
@@ -89,11 +90,12 @@ let pdf = function (x) {
           
           //logo
           //heading
-          doc.text(`${dc}`, {
+          doc.font('Times-Bold').text(`${dc}`, {
             width: 410,
             align: 'left',
             align: 'justify',
-            fontSize: 6
+            fontSize: 3
+        
           }
           )
           doc.moveDown(0.5);
@@ -106,49 +108,36 @@ let pdf = function (x) {
           }
           )
           doc.moveDown(0.5);
-          doc.font('Times-Roman').text('file name', {
-            width: 410,
-            align: 'left',
-            fontSize: 12,
-            underline: true
-          }
-          )
           var lorem = 'It is a good practice to have your first and last name in the file name of your resume. Email clients can mark generic file names as suspicious. Adding your name ensures your resume will be found easily and assigned to the right application.'
-          doc.font('Times-Roman').text(`File is named ${filename}. ${lorem}`, {
+          doc.font('Times-Roman').text('FILE DATA: ', {
+            continued: true,
+            //align: 'left',
+            //align: 'justify',
+            fontSize: 12,
+            //lineGap: 3
+            //underline: true
+          }
+          ).font('Times-Roman').text(`File is named ${filename}. ${lorem}`, {
             width: 410,
             align: 'left',
             align: 'justify',
             fontSize: 12,
             lineGap: 3
-          }
-          )
-          doc.moveDown(0.5);
-          doc.font('Times-Roman').text('file size', {
-            width: 410,
-            align: 'left',
-            fontSize: 12,
-            underline: true
-          }
-          )
-          var vorem = `Recorded file size is ${sgq}.`
-          doc.font('Times-Roman').text(`${vorem}${sgn}`, {
-            width: 410,
-            align: 'left',
-            align: 'justify',
-            fontSize: 12,
-            lineGap: 3
-          }
-          )
-          doc.moveDown(0.5);
-          doc.font('Times-Roman').text('word count', {
-            width: 410,
-            align: 'left',
-            fontSize: 12,
-            underline: true
           }
           )
           
-          doc.font('Times-Roman').text(` The resume contains ${wcn} words (approx.). ${msg}`, {
+          //doc
+          doc.moveDown(0.5);
+          var vorem = `Recorded file size is ${sgq}.`
+          doc.font('Times-Roman').text('FILE SIZE: ', {
+            continued: true,
+            //align: 'left',
+            //align: 'justify',
+            fontSize: 12,
+            //lineGap: 3
+            //underline: true
+          }
+          ).font('Times-Roman').text(`${vorem}${sgn}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -156,17 +145,39 @@ let pdf = function (x) {
             lineGap: 3
           }
           )
-
+          
+          //doc
           doc.moveDown(0.5);
-          doc.font('Times-Roman').text('page count', {
+          doc.font('Times-Roman').text('WORD COUNT: ', {
+            continued: true,
+            //align: 'left',
+            //align: 'justify',
+            fontSize: 12,
+            //lineGap: 3
+            //underline: true
+          }
+          ).font('Times-Roman').text(` The resume contains ${wcn} words (approx.). ${msg}`, {
             width: 410,
             align: 'left',
+            align: 'justify',
             fontSize: 12,
-            underline: true
+            lineGap: 3
           }
           )
+          
+          //doc
+
+          doc.moveDown(0.5);
           var porem ='It is important to nail the right resume length. More than 2 pages and the recruiter will not read through your resume, whereas, if it is too short, it will undersell you.'
-          doc.font('Times-Roman').text(` ${psg} ${porem}`, {
+          doc.font('Times-Roman').text('PAGE COUNT: ', {
+            continued: true,
+            //align: 'left',
+            //align: 'justify',
+            fontSize: 12,
+            //lineGap: 3
+            //underline: true
+          }
+          ).font('Times-Roman').text(` ${psg} ${porem}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -174,17 +185,20 @@ let pdf = function (x) {
             lineGap: 3
           }
           )
+          
+          //doc
 
           doc.moveDown(0.5);
-          doc.font('Times-Roman').text('social links', {
-            width: 410,
-            align: 'left',
-            fontSize: 12,
-            underline: true
-          }
-          )
           var dorem ='Having a professional LinkedIn profile will signifcantly improve your chances of getting an interview.'
-          doc.font('Times-Roman').text(` ${lgn} ${dorem}`, {
+          doc.font('Times-Roman').text('SOCIAL LINKS: ', {
+            continued: true,
+            //align: 'left',
+            //align: 'justify',
+            fontSize: 12,
+            //lineGap: 3
+            //underline: true
+          }
+          ).font('Times-Roman').text(` ${lgn} ${dorem}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -192,36 +206,40 @@ let pdf = function (x) {
             lineGap: 3
           }
           )
+          
+          //doc
+          doc.moveDown(0.5);
+          var S ='Using the right verbs, adjectives and adverbs will help boost the quality and grammatical makeup of sentences. Try to use British English when constructing words and always add the full meaning of abbreviations. Having a resume devoid of grammatical errors will prevent it from getting flagged by ATS.'
+          doc.font('Times-Roman').text('GRAMMAR CHECK: ', {
+            continued: true,
+            //align: 'left',
+            //align: 'justify',
+            fontSize: 12,
+            //lineGap: 3
+            //underline: true
+          }
+          ).font('Times-Roman').text(` ${spl} ${S}`, {
+            width: 410,
+            align: 'left',
+            align: 'justify',
+            fontSize: 12,
+            lineGap: 3
+          }
+          )
+          
+          //doc
 
           doc.moveDown(0.5);
-          doc.font('Times-Roman').text('grammar check', {
-            width: 410,
-            align: 'left',
+          var rvp = 'A well-organized resume that includes the appropriate elements and information can get a hiring manager\'s attention and help you earn a job interview.'
+          doc.font('Times-Roman').text('REQUIRED SECTIONS: ', {
+            continued: true,
+            //align: 'left',
+            //align: 'justify',
             fontSize: 12,
-            underline: true
+            //lineGap: 3
+            //underline: true
           }
-          )
-          var S ='Using the right verbs, adjectives and adverbs will help boost the quality and grammatical makeup of sentences. Try to use British English when constructing words and always add the full meaning of abbreviations. Having a resume devoid of grammatical errors will prevent it from getting flagged by ATS'
-          doc.font('Times-Roman').text(` ${spl} ${S}`, {
-            width: 410,
-            align: 'left',
-            align: 'justify',
-            fontSize: 12,
-            lineGap: 3
-          }
-          )
-
-          doc.moveDown(0.5);
-          doc.font('Times-Roman').text('required sections', {
-            width: 410,
-            align: 'left',
-            fontSize: 12,
-            underline: true,
-            lineGap: 3
-          }
-          )
-           var rvp = 'A well-organized resume that includes the appropriate elements and information can get a hiring manager\'s attention and help you earn a job interview.'
-          doc.font('Times-Roman').text(` ${rpg} ${rvp}`, {
+          ).font('Times-Roman').text(` ${rpg} ${rvp}`, {
             width: 410,
             align: 'left',
             align: 'justify',
@@ -229,9 +247,10 @@ let pdf = function (x) {
             lineGap: 3
           }
           )
+           
           var avp =`Your ATS score is ${finalscore}%. A score of 80% or higher moves your file to the next stage in the recruitment process. ATS looks for, and awards percentage points to sepcific instances of a word and in specific amounts.`
           doc.moveDown(0.5);
-          doc.font('Times-Bold').text('ats', {
+          doc.font('Times-Bold').text('ATS: ', {
             continued: true,
             //align: 'left',
             //align: 'justify',
@@ -240,7 +259,7 @@ let pdf = function (x) {
             //underline: true
           }
           ).font('Times-Roman').text(`${apg} ${avp}`, {
-            
+            width: 410,
             align: 'left',
             align: 'justify',
             fontSize: 12,
