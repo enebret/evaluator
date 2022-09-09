@@ -13,15 +13,17 @@ const path = require('path');
 const linknD = require ('./linkfinder.js');
 const { clearInterval } = require( 'timers' );
 
+ 
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const txt2 = 'c:/Users/a_cb/Downloads/sulaman ubrahum cv ga.docx';
 const docxFile = 'c:/Users/LENOVO/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const txt4 = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
 const txt3 = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
+var glob = require("glob");
 
 
-//console.log(doc)
+
 var d = function (x) {
     function fileN (x) {
         if (path.extname(x)=='.docx') {
@@ -53,18 +55,18 @@ var d = function (x) {
       contactdetails(x, txtPath);
       linknD(x, txtPath);
       filetype(x, txtPath);
-      pagecount(x, txtPath);
+      //pagecount(x, txtPath);
       wordcount(x, txtPath);
       fileSize(x, txtPath);
       spellcheck(x,txtPath);
       rs(x, txtPath);
       ats(x, txtPath);
-      setTimeout(() => {
+      /*setTimeout(() => {
         pdf(txtPath2)
-      }, 70000);
+      }, 70000);*/
          
           
-   setTimeout(() => {
+   /*setTimeout(() => {
     const yf = path.resolve(__dirname, '..');
     fs.readdir(yf, (err, files) => {
     files.forEach(file=>{
@@ -75,19 +77,19 @@ var d = function (x) {
           }
         })
       });
-   }, 120000);
+   }, 120000);*/
           
 
-      setTimeout(() => {
+      /*setTimeout(() => {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
-      }, 70000);
+      }, 70000);*/
    } 
 
 
-//d(docxFile5)
+d(txt2)
 
-module.exports = d
+//module.exports = d
 
    
 

@@ -7,6 +7,7 @@ const txt1 = 'c:/Users/a_cb/Downloads/SALAHU AHMED CV-3 (1).pdf';;
 const txt2 = 'c:/Users/LENOVO/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const txt3 = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 const txt4 = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
+const txt5 = 'c:/Users/a_cb/Downloads/sulaman ubrahum cv ga.docx';
 
 var filetype = function (x) {
     var lp = [];
@@ -23,6 +24,7 @@ var filetype = function (x) {
 function atsScore (x, y) {
     if (path.extname(x)=='.docx') {
         textract.fromFileWithPath(x, function( error, text ) {
+           
             let rp = text.trim().replace(/[\r\n]/gm, '').split(" ");
             let fg = []
            rp.forEach((x)=>{
@@ -77,11 +79,8 @@ function atsScore (x, y) {
                 let rp = filetype(x);
                 score.push(Number(rp.toString()));
                 let totalscore = score.reduce((partialSum, a) => partialSum + a, 0);
-                fs.appendFile(y, `ats total score: ${totalscore}`+'\n', function (err) {
-                    if (err) throw err;
-                    console.log (`ats total score = ${totalscore}%`);
-                  });
-                  //console.log (`ats total score = ${totalscore}%`);
+               
+                  console.log (`ats total score = ${totalscore}%`);
             }
             
             else if(!score) {
@@ -164,5 +163,5 @@ function atsScore (x, y) {
     }
 };
 
-//atsScore(txt4)
+//atsScore(txt5)
 module.exports = atsScore

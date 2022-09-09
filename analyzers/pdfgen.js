@@ -21,8 +21,8 @@ let pdf = function (x) {
         //var filesize = split[2].slice(Number(split[2].indexOf(':'))+2, split[2].length)
         //var wordcount = split[7].slice(11, split[7].length)
         //var pages = split[6].slice(Number(split[6].indexOf(':'))+2, split[6].length);
-        let [sp, pg, wc, lp, tq, at, ...rest] = split.reverse();
-        var pages;
+        let [sp,  wc, lp, tq, at, ...rest] = split.reverse();
+        //var pages;
         var wordcount;
         var filesize;
         var LinkedIn;
@@ -30,13 +30,10 @@ let pdf = function (x) {
         var ATS;
         var RS;
         //console.log(pg, wc, lp, tq)
-        [pg, wc, lp, tq, at].forEach(x=>{
+        [ wc, lp, tq, at].forEach(x=>{
           if (x.indexOf('w')==0) {
             //console.log(x);
             wordcount = x;
-          } else if (x.indexOf('p')==0) {
-            //console.log(x)
-            pages = x;
           } else if (x.indexOf('r')==0) {
             RS = x;
             //console.log(x)
@@ -76,12 +73,12 @@ let pdf = function (x) {
           var sgq = filesize.slice(Number(filesize.indexOf(':')+2, filesize.length));
           var sgn;
           let wcn = Number((wordcount.slice(Number(wordcount.indexOf(':'))+2, wordcount.length)));
-          let pgn = Number(pages.slice(Number(pages.indexOf(':'))+2, pages.length));
+          //let pgn = Number(pages.slice(Number(pages.indexOf(':'))+2, pages.length));
           let a = Number(ATS.slice(Number(ATS.indexOf(':')+2, ATS.length)));
           let r = RS.slice(Number(RS.indexOf(':')+2, RS.length))
           let finalscore = a.toString();
           wcn < 400? (msg = 'The total word-count of your resume accessed falls below the recommended number. Try to elaborate more on achievements and past experience.') : wcn < 600? (msg = 'The total word-count accessed falls within the recommended range.') : (msg = 'The total word-count exceeds the recommended range. Try to summarize your experiences and achievements.')
-          pgn === 1 ? (psg = 'The resume is 1 page long. This maybe too short. Try to make it 2 pages.') : pgn === 2 ? (psg = 'The resume is 2 pages long which is the recommended number of pages required in a standard resume.') : (psg = 'The resume exceeds the recommended number of pages required.Try to use each page more efficiently. You can use our CV services to achieve this in approx. 2 minutes. No registration required.')
+          //pgn === 1 ? (psg = 'The resume is 1 page long. This maybe too short. Try to make it 2 pages.') : pgn === 2 ? (psg = 'The resume is 2 pages long which is the recommended number of pages required in a standard resume.') : (psg = 'The resume exceeds the recommended number of pages required.Try to use each page more efficiently. You can use our CV services to achieve this in approx. 2 minutes. No registration required.')
           sg == 'kB'? (sgn = 'The resume falls within the recommended size estimate.') : (sgn = 'The file is too large. We recommend removing any custom background images or formatting elements as you did, or resolving it in a different format setting that will allow for file compression.')
           s == 'wrong spellings'? (spl = 'The resume file failed some spelling tests.') : (spl = 'The resume file has no spelling errors.')
           lkn == 'No LinkedIn link found.'? (lgn = 'The resume file has no LinkedIn link.') : (lgn = 'The file contains a LinkedIn link.');
@@ -167,24 +164,8 @@ let pdf = function (x) {
           
           //doc
 
-          doc.moveDown(0.5);
-          var porem ='It is important to nail the right resume length. More than 2 pages and the recruiter will not read through your resume, whereas, if it is too short, it will undersell you.'
-          doc.font('Times-Roman').text('PAGE COUNT: ', {
-            continued: true,
-            //align: 'left',
-            //align: 'justify',
-            fontSize: 12,
-            //lineGap: 3
-            //underline: true
-          }
-          ).font('Times-Roman').text(` ${psg} ${porem}`, {
-            width: 410,
-            align: 'left',
-            align: 'justify',
-            fontSize: 12,
-            lineGap: 3
-          }
-          )
+         
+       
           
           //doc
 
