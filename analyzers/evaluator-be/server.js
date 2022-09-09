@@ -26,9 +26,6 @@ app.use('/upload', limits);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
-  var furl = req.protocol + "://" + 
-    req.hostname + req.originalUrl;
-    console.log(furl)
 })
 
 
@@ -91,16 +88,7 @@ app.post('/upload', function(req, res) {
       });
     })
     
-/*app.post("/", (req, res) => {
-    upload(req, res, (err) => {
-     if(err) {
-       res.status(400).send("Something went wrong!");
-     }
-     res.send(req.file);
-     const file  = req.file;
-     fs.writeFileSync('some.pdf', req.file)
-   });
- });*/
+
 
 
 app.listen(port, () => {
