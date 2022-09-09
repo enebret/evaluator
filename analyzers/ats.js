@@ -75,14 +75,13 @@ function atsScore (x, y) {
                 
             };  if (score) {
                 let rp = filetype(x);
-                score.push(rp.toString());
+                score.push(Number(rp.toString()));
                 let totalscore = score.reduce((partialSum, a) => partialSum + a, 0);
                 fs.appendFile(y, `ats total score: ${totalscore}`+'\n', function (err) {
                     if (err) throw err;
                     console.log (`ats total score = ${totalscore}%`);
                   });
                   //console.log (`ats total score = ${totalscore}%`);
-                
             }
             
             else if(!score) {
@@ -165,5 +164,5 @@ function atsScore (x, y) {
     }
 };
 
-//atsScore(txt1)
+//atsScore(txt4)
 module.exports = atsScore

@@ -70,15 +70,7 @@ function spellCheck (x, y) {
                     var lk = []
                     fg.forEach((x)=>{
                     if(/[a-zA-Z]/.test(x[0])){
-                        /*SpellChecker.getDictionary("en-US", function(err, dictionary) {
-                            if(!err) {
-                            var misspelled = ! dictionary.spellCheck(x);
-                            if(misspelled) {
-                                //console.log('misspelt!')
-                                lk.push(x)
-                                }
-                            }
-                        });*/lk.push(x)
+                       lk.push(x)
                         }
                     })
                 var spellings = []
@@ -117,5 +109,5 @@ function spellCheck (x, y) {
     }
 };
 
-//spellCheck(txt3)
+//spellCheck(txt4)
 module.exports = spellCheck

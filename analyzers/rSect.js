@@ -49,17 +49,32 @@ function rsection (x, y) {
             }; if(spellings) {
                 let uniquespells = spellings.filter((x,y)=>spellings.indexOf(x)===y);
                 if( uniquespells[0]==='Experience' || uniquespells[0]==='EXPERIENCE' && uniquespells[0]==='EDUCATION' || uniquespells[0]==='Education' && uniquespells[0]==='OBJECTIVE' || uniquespells[0]==='OBJECTIVES' || uniquespells[0]==='Objectives'){
-                      console.log ('compulsory sections found.')
+                    fs.appendFile(y, 'rs: compulsory sections found'+'\n', function (err) {
+                        if (err) throw err;
+                        console.log('rs: compulsory sections found')
+                        });
                 } else if (uniquespells[0]=='objectives' || uniquespells[0]==='OBJECTIVE' || uniquespells[0]==='OBJECTIVES' && uniquespells[0]==='Experience'|| uniquespells[0]==='EXPERIENCE' ) {
-                  console.log('only two sections found')
+                    fs.appendFile(y, 'rs: Incomplete required sections found'+'\n', function (err) {
+                        if (err) throw err;
+                        console.log('Incomplete required sections found')
+                        });
                 } else if (uniquespells[0]==='Experience' || uniquespells[0]==='EXPERIENCE' && 'education' || uniquespells[0]==='EDUCATION' || uniquespells[0]==='Education') {
-                  console.log('only two sections found')
+                    fs.appendFile(y, 'rs: Incomplete required sections found'+'\n', function (err) {
+                        if (err) throw err;
+                        console.log('Incomplete required sections found')
+                        });
                 } else if (uniquespells[0]=='objectives' || uniquespells[0]==='OBJECTIVE' || uniquespells[0]==='OBJECTIVES' && 'education' || uniquespells[0]==='EDUCATION' || uniquespells[0]==='Education') {
-                      console.log('only two sections found')
+                    fs.appendFile(y, 'rs: Incomplete required sections found'+'\n', function (err) {
+                        if (err) throw err;
+                        console.log('Incomplete required sections found')
+                        });
                 } else if (uniquespells[0]=='objectives' || uniquespells[0]==='OBJECTIVE' || uniquespells[0]==='OBJECTIVES' || uniquespells[0]==='Experience' || uniquespells[0]==='EXPERIENCE' || 'education' || uniquespells[0]==='EDUCATION' || uniquespells[0]==='Education') {
-                      console.log('only one section found')
+                    fs.appendFile(y, 'rs: Incomplete required sections found'+'\n', function (err) {
+                        if (err) throw err;
+                        console.log('Incomplete required sections found')
+                        });
                 }
-                console.log(uniquespells)
+                //console.log(uniquespells)
             } else if(!spellings) {
                 /*fs.appendFile(y, 'Spelling: no wrong spellings'+'\n', function (err) {
                     if (err) throw err;
@@ -144,7 +159,7 @@ function rsection (x, y) {
                             });
                             
                       }
-                      console.log(uniquespells)
+                      //console.log(uniquespells)
                 } else if(!spellings) {
                     fs.appendFile(y, 'rs: No required sections found'+'\n', function (err) {
                         if (err) throw err;
@@ -158,5 +173,5 @@ function rsection (x, y) {
     }
 };
 
-//rsection(txt1)
+//rsection(txt4)
 module.exports = rsection

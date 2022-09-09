@@ -17,7 +17,7 @@ const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const docxFile = 'c:/Users/LENOVO/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const txt4 = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
-const doc = path.resolve(__dirname+'/evaluator-be/HARRY AKHALUODE CV.docx');
+const txt3 = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
 
 
 //console.log(doc)
@@ -46,7 +46,7 @@ var d = function (x) {
         if (err) throw err;
         console.log('File is created successfully.');
       });
-
+      
       fileB(x, txtPath);
       
       contactdetails(x, txtPath);
@@ -58,12 +58,12 @@ var d = function (x) {
       spellcheck(x,txtPath);
       rs(x, txtPath);
       ats(x, txtPath);
-         /*setTimeout(() => {
-            pdf(txtPath2)
-          }, 45000);*/
+      setTimeout(() => {
+        pdf(txtPath2)
+      }, 55000);
          
           
-   /*setTimeout(() => {
+   setTimeout(() => {
     const yf = path.resolve(__dirname, '..');
     fs.readdir(yf, (err, files) => {
     files.forEach(file=>{
@@ -74,17 +74,17 @@ var d = function (x) {
           }
         })
       });
-   }, 120000);*/
+   }, 120000);
           
 
-      /*setTimeout(() => {
+      setTimeout(() => {
         fs.unlinkSync(txtPath2);
         console.log(".txt file removed.");
-      }, 70000);*/
+      }, 70000);
    } 
 
 
-d(docxFile5)
+d(txt4)
 
 //module.exports = d
 

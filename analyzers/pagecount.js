@@ -14,7 +14,7 @@ const docxFile2 = 'c:/Users/a_cb/Documents/okwute.docx';
 const docxFile3 = 'c:/Users/a_cb/Documents/E.I.O.pdf';
 const testFile = 'c:/Users/LENOVO/Documents/gfsv_amf_agd.docx';
 const docxFile5 = 'c:/Users/a_cb/Downloads/HARRY AKHALUODE CV.docx';
-const docxFile1 = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
+const txt4 = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
 const fs = require('fs');
 const path = require('path');
 var textract = require('textract');
@@ -37,14 +37,14 @@ var p = function (x, y) {
       let dataBuffer = fs.readFileSync('./output.pdf');
       pdf(dataBuffer).then(function(data) {
         var pages = data.numpages
-        //console.log(pages)
+        console.log(pages)
         fs.appendFile(y, `pages: ${pages}`+'\n', function (err) {
           if (err) throw err;
           console.log('number of pages copied successfully');
         });
           //write page number to txt file (create txt file with username)
       })
-  }, 40000);
+  }, 45000);
   setTimeout(() => {
     fs.unlinkSync('./output.pdf');
         console.log("File removed:");
@@ -68,5 +68,5 @@ var p = function (x, y) {
   
 module.exports = p
 
-//p(docxFile)
+//p(txt4)
 

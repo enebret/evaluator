@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const dc = new Date().toLocaleDateString('en-GB', {timeZone: 'Africa/Lagos', weekday:"long", year:"numeric", month:"short", day:"numeric"})
 const txt = './SALAHU AHMED CV-3 (1).txt';
-const docxFile = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
+const txt3 = './sulaman ubrahum cv ga.txt';
 const txt2 = './E.I.O.txt';
 
 const { textTransform } = require('text-transform');
@@ -283,5 +283,5 @@ let pdf = function (x) {
        
 }
 
-pdf(txt)
-//module.exports = pdf
+//pdf(txt3)
+module.exports = pdf
