@@ -15,6 +15,7 @@ const { clearInterval } = require( 'timers' );
 
 const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
 const docxFile5 = 'c:/Users/a_cb/Downloads/SALAHU AHMED CV-3 (1).pdf';
+const txt2 = 'c:/Users/a_cb/Downloads/sulaman ubrahum cv ga.docx';
 const docxFile = 'c:/Users/LENOVO/Downloads/SALAHU AHMED CV-3 (1).pdf';
 const txt4 = 'c:/Users/LENOVO/Downloads/sulaman ubrahum cv ga.docx';
 const txt3 = 'c:/Users/LENOVO/Downloads/HARRY AKHALUODE CV.docx';
@@ -60,7 +61,7 @@ var d = function (x) {
       ats(x, txtPath);
       setTimeout(() => {
         pdf(txtPath2)
-      }, 55000);
+      }, 70000);
          
           
    setTimeout(() => {
@@ -84,7 +85,7 @@ var d = function (x) {
    } 
 
 
-d(txt4)
+d(docxFile5)
 
 //module.exports = d
 
