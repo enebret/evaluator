@@ -32,6 +32,9 @@ app.get('/', (req, res) => {
 
 app.post('/upload', function(req, res) {
   
+let name = req.body.name;
+let email = req.body.email;
+
   console.log(req.body.name)
   console.log(req.body.email)
   //console.log(req.body)
