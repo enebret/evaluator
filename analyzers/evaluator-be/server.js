@@ -37,6 +37,15 @@ let email = req.body.email;
 
   console.log(req.body.name)
   console.log(req.body.email)
+
+  var myData = new User(req.body);
+  myData.save()
+  .then(item => {
+  res.send("item saved to database");
+  })
+  .catch(err => {
+  res.status(400).send("unable to save to database");
+  });
   //console.log(req.body)
   //res.send('file uploaded');
     let sampleFile;
