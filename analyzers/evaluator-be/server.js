@@ -7,10 +7,13 @@ var cors = require('cors')
 const ld = require('../main.js');
 let pc = path.resolve('searchfile.js')
 const moveF = require(pc);
+const connectDB = require('./config/db');
+const User = require('./models/user');
 const fileUpload = require('express-fileupload');
-const testFile = 'c:/Users/LENOVO/Documents/E.I.O.pdf';
-const rateLimit = require('express-rate-limit')
 
+const rateLimit = require('express-rate-limit');
+
+connectDB();
 const limits = rateLimit({
   //30 * 60 * 1000, // 30 minutes
   windowMs: 4 * 60 * 1000, // 30 minutes
@@ -41,7 +44,7 @@ let email = req.body.email;
   var myData = new User(req.body);
   myData.save()
   .then(item => {
-  res.send("item saved to database");
+  res.send("user data saved to database");
   })
   .catch(err => {
   res.status(400).send("unable to save to database");
