@@ -1,4 +1,4 @@
 {
-    "mongoURI":
+  "mongoURI":
       "mongodb+srv://macbeth:macbeth@cluster0.oynwjab.mongodb.net/?retryWrites=true&w=majority"
   }

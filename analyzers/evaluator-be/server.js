@@ -5,9 +5,10 @@ const app = express()
 const port = 3005
 var cors = require('cors')
 const ld = require('../main.js');
-let pc = path.resolve('searchfile.js')
+let pc = path.resolve('searchfile.js');
+let c = path.resolve('config/db');
 const moveF = require(pc);
-const connectDB = require('./config/db');
+const connectDB = require(c);
 const User = require('./models/user');
 const fileUpload = require('express-fileupload');
 
