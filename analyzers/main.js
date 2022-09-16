@@ -87,9 +87,9 @@ var d = function (x) {
    } 
 
 
-d(txt2)
+//d(txt2)
 
-//module.exports = d
+module.exports = d
 
    
 
